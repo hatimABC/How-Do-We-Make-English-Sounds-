@@ -1,0 +1,2670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Time to Pronounce — Beginner English Pronunciation Study Guide</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+          },
+          colors: {
+            cream: '#FAF8F5',
+            warmborder: '#E7E5E4',
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      background-color: #FAF8F5;
+      color: #1E293B;
+      font-family: 'Inter', sans-serif;
+    }
+    h1, h2, h3, .font-display {
+      font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    }
+    /* Smooth subtle animations */
+    @keyframes pulseVoice {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.18); opacity: 0.4; }
+    }
+    .voice-pulse {
+      animation: pulseVoice 1.2s ease-in-out infinite;
+      transform-origin: center;
+    }
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+      animation: fadeSlideIn 0.25s ease-out forwards;
+    }
+    /* Interactive SVG hotspot styling */
+    .organ-hotspot {
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .organ-hotspot:hover .hotspot-ring {
+      r: 14;
+      opacity: 0.45;
+    }
+    .organ-hotspot.active .hotspot-dot {
+      fill: #4F46E5;
+      stroke: #FFFFFF;
+      stroke-width: 3;
+    }
+    .organ-hotspot.active .hotspot-ring {
+      fill: #4F46E5;
+      opacity: 0.3;
+    }
+    /* Custom scrollbar for horizontal pill lists on small screens */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-indigo-100 selection:text-indigo-900">
+
+  <!-- ==================== STICKY HEADER ==================== -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-stone-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between py-3 gap-3">
+        <!-- Brand Logo & Title -->
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 to-teal-500 flex items-center justify-center text-white shadow-md shrink-0">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+              </svg>
+            </div>
+            <div>
+              <h1 class="text-lg sm:text-xl font-extrabold tracking-tight text-slate-900 leading-tight">Time to Pronounce</h1>
+              <p class="text-xs text-slate-500 font-medium">Beginner English Sounds Study Guide • 20 Lessons</p>
+            </div>
+          </div>
+
+          <!-- Mobile Progress Badge -->
+          <div class="sm:hidden flex items-center gap-2 bg-indigo-50 border border-indigo-100 px-3 py-1.5 rounded-full">
+            <span class="text-amber-500 text-sm">★</span>
+            <span id="mobile-progress-text" class="text-xs font-bold text-indigo-700">0/41</span>
+          </div>
+        </div>
+
+        <!-- Navigation Tabs + Desktop Progress Badge -->
+        <div class="flex items-center justify-between sm:justify-end gap-3">
+          <nav class="flex items-center bg-stone-100 p-1 rounded-xl w-full sm:w-auto overflow-x-auto no-scrollbar" aria-label="Main sections">
+            <button onclick="switchMainTab('basics')" id="tab-basics" class="main-tab flex-1 sm:flex-none px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap bg-white text-indigo-700 shadow-sm">
+              1. Learn the Basics
+            </button>
+            <button onclick="switchMainTab('explorer')" id="tab-explorer" class="main-tab flex-1 sm:flex-none px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap text-slate-600 hover:text-slate-900">
+              2. Sound Explorer
+            </button>
+            <button onclick="switchMainTab('practice')" id="tab-practice" class="main-tab flex-1 sm:flex-none px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap text-slate-600 hover:text-slate-900">
+              3. Practice Arena
+            </button>
+          </nav>
+
+          <!-- Desktop Progress Badge -->
+          <div class="hidden sm:flex items-center gap-2.5 bg-indigo-50/80 border border-indigo-100 px-3.5 py-1.5 rounded-xl shrink-0" title="Sounds explored and practice stars earned">
+            <div class="flex flex-col">
+              <div class="flex items-center justify-between gap-2 text-[11px] font-bold text-indigo-800">
+                <span id="desktop-explored-text">0 / 41 Sounds</span>
+                <span class="text-amber-600">★ <span id="desktop-stars-text">0</span></span>
+              </div>
+              <div class="w-28 h-1.5 bg-indigo-200/70 rounded-full overflow-hidden mt-1">
+                <div id="desktop-progress-bar" class="h-full bg-gradient-to-r from-indigo-600 to-teal-500 rounded-full transition-all duration-500" style="width: 0%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Browser Speech Warning Banner (Hidden unless unsupported) -->
+  <div id="speech-warning" class="hidden bg-amber-50 border-b border-amber-200 text-amber-800 text-xs sm:text-sm px-4 py-2 text-center">
+    Note: Your browser does not support built-in audio speech playback. You can still use all visual diagrams, guides, and text exercises!
+  </div>
+
+  <!-- Toast Notification Container (No alert() used anywhere) -->
+  <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+
+    <!-- ========================================================== -->
+    <!-- SECTION 1: LEARN THE BASICS (ANATOMY & CORE CONCEPTS)      -->
+    <!-- ========================================================== -->
+    <section id="section-basics" class="main-section animate-fade-in space-y-8">
+      <!-- Hero Intro Banner -->
+      <div class="bg-gradient-to-r from-indigo-600 via-indigo-700 to-teal-600 rounded-2xl p-6 sm:p-8 text-white shadow-lg relative overflow-hidden">
+        <div class="relative z-10 max-w-3xl">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur-sm text-xs font-semibold tracking-wide uppercase mb-3">
+            Welcome, Beginner Learner!
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-2">How Do We Make English Sounds?</h2>
+          <p class="text-indigo-100 text-sm sm:text-base leading-relaxed">
+            Every English sound is made by moving air from your lungs through your throat, mouth, or nose. Explore the parts of your mouth below to see <strong>what touches what</strong>, then learn the key ideas behind voicing, vowel length, silent letters, and more.
+          </p>
+        </div>
+        <div class="hidden md:block absolute -right-8 -bottom-8 w-52 h-52 rounded-full bg-white/10 blur-2xl"></div>
+      </div>
+
+      <!-- 1A. INTERACTIVE SPEECH ORGANS DIAGRAM -->
+      <div class="bg-white rounded-2xl border border-stone-200 shadow-sm p-5 sm:p-7">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-5">
+          <div>
+            <h3 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+              <span class="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center text-sm font-extrabold">A</span>
+              Interactive Speech Organs Diagram
+            </h3>
+            <p class="text-sm text-slate-500 mt-0.5">Tap any numbered dot on the diagram (or button below) to discover its role in English pronunciation.</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          <!-- Left: Sagittal Cross-Section SVG -->
+          <div class="lg:col-span-7 bg-cream rounded-2xl border border-stone-200 p-4 flex flex-col items-center">
+            <svg id="anatomy-svg" viewBox="0 0 460 390" class="w-full max-w-lg h-auto select-none" role="img" aria-label="Interactive side-view diagram of human speech organs">
+              <defs>
+                <linearGradient id="skinGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#FDE8D7" />
+                  <stop offset="100%" stop-color="#F6D0B4" />
+                </linearGradient>
+                <linearGradient id="tongueGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#FB7185" />
+                  <stop offset="100%" stop-color="#E11D48" />
+                </linearGradient>
+              </defs>
+
+              <!-- Outer Head & Neck Silhouette -->
+              <path d="M 160 22 C 250 18, 365 45, 395 135 C 415 195, 405 270, 385 370 L 210 370 L 205 315 C 185 318, 155 322, 132 308 C 118 298, 118 278, 126 266 C 118 258, 118 242, 125 232 C 110 228, 102 214, 112 200 C 102 192, 102 178, 116 172 C 118 164, 124 156, 122 148 L 88 138 C 78 134, 80 120, 92 112 L 136 78 C 142 52, 148 30, 160 22 Z"
+                    fill="url(#skinGrad)" stroke="#CBD5E1" stroke-width="2" />
+
+              <!-- Nasal Cavity -->
+              <path id="region-nasal" d="M 122 146 C 155 118, 225 102, 290 120 C 318 128, 332 150, 336 185 L 315 188 C 308 162, 295 148, 270 144 C 218 138, 162 150, 134 162 Z"
+                    fill="#E0F2FE" stroke="#7DD3FC" stroke-width="2" class="transition-all duration-200 cursor-pointer" onclick="selectOrgan('nasal')" />
+
+              <!-- Oral Cavity & Pharynx (Airway) -->
+              <path d="M 124 206 C 145 192, 175 162, 238 158 C 280 156, 315 170, 326 205 C 338 242, 335 305, 328 370 L 278 370 C 282 315, 282 272, 274 245 C 258 232, 192 238, 134 226 Z"
+                    fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.8" />
+
+              <!-- Hard Palate Highlight -->
+              <path id="region-hard-palate" d="M 164 176 C 188 162, 218 157, 250 159"
+                    fill="none" stroke="#F59E0B" stroke-width="6" stroke-linecap="round" opacity="0.65" class="cursor-pointer transition-all" onclick="selectOrgan('hard-palate')" />
+
+              <!-- Soft Palate (Velum) -->
+              <path id="region-velum" d="M 252 159 C 282 162, 305 174, 314 196 C 304 194, 292 184, 276 176 C 266 171, 258 167, 252 159 Z"
+                    fill="#FDA4AF" stroke="#F43F5E" stroke-width="1.8" class="cursor-pointer transition-all" onclick="selectOrgan('velum')" />
+
+              <!-- Alveolar Ridge (Bump behind upper teeth) -->
+              <path id="region-alveolar" d="M 142 188 C 149 183, 157 179, 165 176"
+                    fill="none" stroke="#0D9488" stroke-width="7" stroke-linecap="round" opacity="0.8" class="cursor-pointer transition-all" onclick="selectOrgan('alveolar')" />
+
+              <!-- Upper & Lower Teeth -->
+              <path id="region-teeth-upper" d="M 134 188 L 143 188 L 140 206 L 133 204 Z"
+                    fill="#FFFFFF" stroke="#64748B" stroke-width="1.8" class="cursor-pointer" onclick="selectOrgan('teeth')" />
+              <path id="region-teeth-lower" d="M 135 234 L 144 232 L 142 217 L 135 219 Z"
+                    fill="#FFFFFF" stroke="#64748B" stroke-width="1.8" class="cursor-pointer" onclick="selectOrgan('teeth')" />
+
+              <!-- Upper & Lower Lips -->
+              <path id="region-lips-upper" d="M 114 174 C 122 174, 130 182, 130 194 C 122 197, 112 196, 110 188 Z"
+                    fill="#FDA4AF" stroke="#E11D48" stroke-width="1.6" class="cursor-pointer" onclick="selectOrgan('lips')" />
+              <path id="region-lips-lower" d="M 112 222 C 120 218, 130 222, 132 234 C 125 242, 114 242, 112 232 Z"
+                    fill="#FDA4AF" stroke="#E11D48" stroke-width="1.6" class="cursor-pointer" onclick="selectOrgan('lips')" />
+
+              <!-- Tongue (Tip, Blade, Back) -->
+              <path id="region-tongue" d="M 148 228 C 154 212, 178 198, 218 196 C 258 195, 286 210, 294 242 C 299 266, 296 296, 286 318 L 236 318 C 228 282, 198 258, 160 250 C 148 247, 144 238, 148 228 Z"
+                    fill="url(#tongueGrad)" opacity="0.88" stroke="#BE123C" stroke-width="2" class="cursor-pointer transition-all" onclick="selectOrgan('tongue')" />
+              <!-- Subtle Tongue Sub-labels -->
+              <text x="163" y="226" font-size="9.5" fill="#FFF1F2" font-weight="700" class="pointer-events-none">Tip</text>
+              <text x="206" y="216" font-size="9.5" fill="#FFF1F2" font-weight="700" class="pointer-events-none">Blade</text>
+              <text x="252" y="230" font-size="9.5" fill="#FFF1F2" font-weight="700" class="pointer-events-none">Back</text>
+
+              <!-- Vocal Cords / Larynx -->
+              <g id="region-vocal" class="cursor-pointer" onclick="selectOrgan('vocal')">
+                <ellipse cx="303" cy="336" rx="22" ry="12" fill="#CCFBF1" stroke="#0D9488" stroke-width="2" />
+                <path d="M 288 336 Q 303 328 318 336 Q 303 344 288 336 Z" fill="#14B8A6" />
+              </g>
+
+              <!-- ===== CLICKABLE NUMBERED HOTSPOTS ===== -->
+              <!-- 1. Lips -->
+              <g class="organ-hotspot active" data-organ="lips" onclick="selectOrgan('lips')">
+                <circle class="hotspot-ring" cx="118" cy="206" r="12" fill="#4F46E5" opacity="0.25" />
+                <circle class="hotspot-dot" cx="118" cy="206" r="9.5" fill="#4F46E5" stroke="#FFF" stroke-width="2" />
+                <text x="118" y="210" text-anchor="middle" font-size="10" font-weight="800" fill="#FFF">1</text>
+              </g>
+              <!-- 2. Teeth -->
+              <g class="organ-hotspot" data-organ="teeth" onclick="selectOrgan('teeth')">
+                <circle class="hotspot-ring" cx="139" cy="197" r="11" fill="#0D9488" opacity="0.2" />
+                <circle class="hotspot-dot" cx="139" cy="197" r="9" fill="#0F766E" stroke="#FFF" stroke-width="2" />
+                <text x="139" y="201" text-anchor="middle" font-size="10" font-weight="800" fill="#FFF">2</text>
+              </g>
+              <!-- 3. Alveolar Ridge -->
+              <g class="organ-hotspot" data-organ="alveolar" onclick="selectOrgan('alveolar')">
+                <circle class="hotspot-ring" cx="156" cy="180" r="11" fill="#0D9488" opacity="0.2" />
+                <circle class="hotspot-dot" cx="156" cy="180" r="9" fill="#0F766E" stroke="#FFF" stroke-width="2" />
+                <text x="156" y="184" text-anchor="middle" font-size="10" font-weight="800" fill="#FFF">3</text>
+              </g>
+              <!-- 4. Hard Palate -->
+              <g class="organ-hotspot" data-organ="hard-palate" onclick="selectOrgan('hard-palate')">
+                <circle class="hotspot-ring" cx="212" cy="160" r="11" fill="#D97706" opacity="0.2" />
+                <circle class="hotspot-dot" cx="212" cy="160" r="9" fill="#B45309" stroke="#FFF" stroke-width="2" />
+                <text x="212" y="164" text-anchor="middle" font-size="10" font-weight="800" fill="#FFF">4</text>
+              </g>
+              <!-- 5. Soft Palate (Velum) -->
+              <g class="organ-hotspot" data-organ="velum" onclick="selectOrgan('velum')">
+                <circle class="hotspot-ring" cx="288" cy="175" r="11" fill="#E11D48" opacity="0.2" />
+                <circle class="hotspot-dot" cx="288" cy="175" r="9" fill="#BE123C" stroke="#FFF" stroke-width="2" />
+                <text x="288" y="179" text-anchor="middle" font-size="10" font-weight="800" fill="#FFF">5</text>
+              </g>
+              <!-- 6. Tongue -->
+              <g class="organ-hotspot" data-organ="tongue" onclick="selectOrgan('tongue')">
+                <circle class="hotspot-ring" cx="222" cy="242" r="11" fill="#E11D48" opacity="0.2" />
+                <circle class="hotspot-dot" cx="222" cy="242" r="9" fill="#9F1239" stroke="#FFF" stroke-width="2" />
+                <text x="222" y="246" text-anchor="middle" font-size="10" font-weight="800" fill="#FFF">6</text>
+              </g>
+              <!-- 7. Nasal Cavity -->
+              <g class="organ-hotspot" data-organ="nasal" onclick="selectOrgan('nasal')">
+                <circle class="hotspot-ring" cx="220" cy="126" r="11" fill="#0284C7" opacity="0.2" />
+                <circle class="hotspot-dot" cx="220" cy="126" r="9" fill="#0369A1" stroke="#FFF" stroke-width="2" />
+                <text x="220" y="130" text-anchor="middle" font-size="10" font-weight="800" fill="#FFF">7</text>
+              </g>
+              <!-- 8. Vocal Cords -->
+              <g class="organ-hotspot" data-organ="vocal" onclick="selectOrgan('vocal')">
+                <circle class="hotspot-ring" cx="303" cy="336" r="12" fill="#0D9488" opacity="0.25" />
+                <circle class="hotspot-dot" cx="303" cy="336" r="9.5" fill="#0F766E" stroke="#FFF" stroke-width="2" />
+                <text x="303" y="340" text-anchor="middle" font-size="10" font-weight="800" fill="#FFF">8</text>
+              </g>
+
+              <!-- Callout Labels -->
+              <text x="20" y="128" font-size="11" font-weight="700" fill="#0369A1">7. Nasal Cavity</text>
+              <line x1="104" y1="125" x2="180" y2="125" stroke="#7DD3FC" stroke-width="1.2" stroke-dasharray="3 2" />
+
+              <text x="12" y="175" font-size="11" font-weight="700" fill="#0F766E">3. Alveolar Ridge</text>
+              <line x1="108" y1="173" x2="146" y2="178" stroke="#5EEAD4" stroke-width="1.2" stroke-dasharray="3 2" />
+
+              <text x="14" y="212" font-size="11" font-weight="700" fill="#4F46E5">1. Lips</text>
+              <line x1="56" y1="208" x2="106" y2="206" stroke="#A5B4FC" stroke-width="1.2" stroke-dasharray="3 2" />
+
+              <text x="14" y="248" font-size="11" font-weight="700" fill="#475569">2. Teeth</text>
+              <line x1="62" y1="244" x2="132" y2="225" stroke="#94A3B8" stroke-width="1.2" stroke-dasharray="3 2" />
+
+              <text x="336" y="160" font-size="11" font-weight="700" fill="#BE123C">5. Soft Palate</text>
+              <line x1="333" y1="158" x2="298" y2="172" stroke="#FDA4AF" stroke-width="1.2" stroke-dasharray="3 2" />
+
+              <text x="204" y="65" font-size="11" font-weight="700" fill="#B45309">4. Hard Palate</text>
+              <line x1="235" y1="70" x2="215" y2="149" stroke="#FCD34D" stroke-width="1.2" stroke-dasharray="3 2" />
+
+              <text x="338" y="340" font-size="11" font-weight="700" fill="#0F766E">8. Vocal Cords</text>
+            </svg>
+
+            <!-- Quick Organ Selector Pills -->
+            <div class="flex flex-wrap justify-center gap-1.5 mt-3 w-full" id="organ-pills"></div>
+          </div>
+
+          <!-- Right: Organ Detail Card -->
+          <div class="lg:col-span-5 bg-indigo-50/50 rounded-2xl border border-indigo-100 p-5 sm:p-6 flex flex-col justify-between min-h-[340px]" id="organ-info-panel">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- 1B. CORE PHONOLOGICAL CONCEPTS -->
+      <div class="space-y-4">
+        <div class="flex items-center gap-2">
+          <span class="w-8 h-8 rounded-lg bg-teal-100 text-teal-700 flex items-center justify-center text-sm font-extrabold">B</span>
+          <h3 class="text-xl font-bold text-slate-900">Core Pronunciation Concepts</h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <!-- Concept 1: Voiced vs Unvoiced -->
+          <div class="bg-white rounded-2xl border border-stone-200 p-5 sm:p-6 shadow-sm">
+            <div class="flex items-center justify-between mb-3">
+              <h4 class="text-lg font-bold text-slate-900">1. Voiced vs. Unvoiced Sounds</h4>
+              <span class="px-2.5 py-1 rounded-full bg-teal-50 text-teal-700 text-xs font-bold">Throat Test</span>
+            </div>
+            <p class="text-sm text-slate-600 leading-relaxed mb-4">
+              <strong>Put your fingers gently on your throat!</strong> Some consonants make your vocal cords vibrate (buzz) — these are <strong>voiced</strong>. Others use <em>just air</em> with no vibration — these are <strong>unvoiced</strong>.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              <div class="bg-teal-50/70 border border-teal-100 rounded-xl p-3">
+                <div class="font-bold text-teal-800 mb-1.5 flex items-center gap-1.5">
+                  <span class="w-2.5 h-2.5 rounded-full bg-teal-500"></span> Voiced (Vibration!)
+                </div>
+                <div class="flex flex-wrap gap-1.5 font-mono text-teal-900 font-semibold">
+                  <span class="bg-white px-2 py-0.5 rounded border border-teal-200">/b/</span>
+                  <span class="bg-white px-2 py-0.5 rounded border border-teal-200">/d/</span>
+                  <span class="bg-white px-2 py-0.5 rounded border border-teal-200">/g/</span>
+                  <span class="bg-white px-2 py-0.5 rounded border border-teal-200">/z/</span>
+                  <span class="bg-white px-2 py-0.5 rounded border border-teal-200">/v/</span>
+                  <span class="bg-white px-2 py-0.5 rounded border border-teal-200">/m/</span>
+                  <span class="bg-white px-2 py-0.5 rounded border border-teal-200">/n/</span>
+                  <span class="bg-white px-2 py-0.5 rounded border border-teal-200">/ŋ/</span>
+                  <span class="bg-white px-2 py-0.5 rounded border border-teal-200">/l/</span>
+                  <span class="bg-white px-2 py-0.5 rounded border border-teal-200">/ð/</span>
+                  <span class="bg-white px-2 py-0.5 rounded border border-teal-200">/ʒ/</span>
+                  <span class="bg-white px-2 py-0.5 rounded border border-teal-200">/dʒ/</span>
+                  <span class="bg-white px-2 py-0.5 rounded border border-teal-200">/w/</span>
+                  <span class="bg-white px-2 py-0.5 rounded border border-teal-200">/r/</span>
+                  <span class="bg-white px-2 py-0.5 rounded border border-teal-200">/j/</span>
+                </div>
+              </div>
+              <div class="bg-amber-50/70 border border-amber-100 rounded-xl p-3">
+                <div class="font-bold text-amber-800 mb-1.5 flex items-center gap-1.5">
+                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Unvoiced (Just Air)
+                </div>
+                <div class="flex flex-wrap gap-1.5 font-mono text-amber-900 font-semibold">
+                  <span class="bg-white px-2 py-0.5 rounded border border-amber-200">/p/</span>
+                  <span class="bg-white px-2 py-0.5 rounded border border-amber-200">/t/</span>
+                  <span class="bg-white px-2 py-0.5 rounded border border-amber-200">/k/</span>
+                  <span class="bg-white px-2 py-0.5 rounded border border-amber-200">/s/</span>
+                  <span class="bg-white px-2 py-0.5 rounded border border-amber-200">/f/</span>
+                  <span class="bg-white px-2 py-0.5 rounded border border-amber-200">/θ/</span>
+                  <span class="bg-white px-2 py-0.5 rounded border border-amber-200">/ʃ/</span>
+                  <span class="bg-white px-2 py-0.5 rounded border border-amber-200">/tʃ/</span>
+                </div>
+                <p class="text-[11px] text-amber-700 mt-2">Tip: All English vowels are voiced!</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Concept 2: Long vs Short Vowels -->
+          <div class="bg-white rounded-2xl border border-stone-200 p-5 sm:p-6 shadow-sm">
+            <div class="flex items-center justify-between mb-3">
+              <h4 class="text-lg font-bold text-slate-900">2. Long vs. Short Vowels</h4>
+              <span class="px-2.5 py-1 rounded-full bg-indigo-50 text-indigo-700 text-xs font-bold">Tip Box :</span>
+            </div>
+            <p class="text-sm text-slate-600 leading-relaxed mb-3">
+              When you see two dots <span class="font-mono font-bold text-indigo-700 bg-indigo-50 px-1.5 py-0.5 rounded">:</span> after a vowel symbol, it means it is a <strong>l-o-n-g</strong> sound! Changing length changes the word meaning:
+            </p>
+            <div class="space-y-2 text-sm">
+              <div class="flex items-center justify-between bg-cream px-3 py-2 rounded-xl border border-stone-200">
+                <span><strong class="text-indigo-700">/i:/</strong> sheep (long) vs. <strong class="text-slate-700">/ɪ/</strong> ship (short)</span>
+                <button onclick="speakPair('sheep', 'ship')" class="text-xs font-semibold text-indigo-600 hover:text-indigo-800 bg-white px-2.5 py-1 rounded-lg border border-indigo-200 shadow-sm">▶ Listen</button>
+              </div>
+              <div class="flex items-center justify-between bg-cream px-3 py-2 rounded-xl border border-stone-200">
+                <span><strong class="text-indigo-700">/ɔ:/</strong> ball (long) vs. <strong class="text-slate-700">/ɒ/</strong> clock (short)</span>
+                <button onclick="speakPair('ball', 'clock')" class="text-xs font-semibold text-indigo-600 hover:text-indigo-800 bg-white px-2.5 py-1 rounded-lg border border-indigo-200 shadow-sm">▶ Listen</button>
+              </div>
+              <div class="flex items-center justify-between bg-cream px-3 py-2 rounded-xl border border-stone-200">
+                <span><strong class="text-indigo-700">/u:/</strong> moon (long) vs. <strong class="text-slate-700">/ʊ/</strong> book (short)</span>
+                <button onclick="speakPair('moon', 'book')" class="text-xs font-semibold text-indigo-600 hover:text-indigo-800 bg-white px-2.5 py-1 rounded-lg border border-indigo-200 shadow-sm">▶ Listen</button>
+              </div>
+              <div class="text-xs text-slate-500 pt-1">
+                Other long vowels in our lessons: <strong class="text-indigo-700">/ɑ:/</strong> heart, car • <strong class="text-indigo-700">/ɜ:/</strong> girl, bird.
+              </div>
+            </div>
+          </div>
+
+          <!-- Concept 3: Diphthongs -->
+          <div class="bg-white rounded-2xl border border-stone-200 p-5 sm:p-6 shadow-sm">
+            <div class="flex items-center justify-between mb-3">
+              <h4 class="text-lg font-bold text-slate-900">3. Diphthongs (Gliding Vowels)</h4>
+              <span class="px-2.5 py-1 rounded-full bg-purple-50 text-purple-700 text-xs font-bold">2-in-1 Glide</span>
+            </div>
+            <p class="text-sm text-slate-600 leading-relaxed mb-3">
+              A <strong>diphthong</strong> starts in one vowel position and smoothly <em>glides</em> to a second position inside a single syllable. Feel your tongue and lips move!
+            </p>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center">
+              <button onclick="speakWord('ear')" class="p-2 rounded-xl bg-cream hover:bg-indigo-50 border border-stone-200 transition">
+                <div class="font-mono font-bold text-indigo-700">/ɪə/</div>
+                <div class="text-xs text-slate-600">ear</div>
+              </button>
+              <button onclick="speakWord('chair')" class="p-2 rounded-xl bg-cream hover:bg-indigo-50 border border-stone-200 transition">
+                <div class="font-mono font-bold text-indigo-700">/eə/</div>
+                <div class="text-xs text-slate-600">chair</div>
+              </button>
+              <button onclick="speakWord('house')" class="p-2 rounded-xl bg-cream hover:bg-indigo-50 border border-stone-200 transition">
+                <div class="font-mono font-bold text-indigo-700">/aʊ/</div>
+                <div class="text-xs text-slate-600">house</div>
+              </button>
+              <button onclick="speakWord('phone')" class="p-2 rounded-xl bg-cream hover:bg-indigo-50 border border-stone-200 transition">
+                <div class="font-mono font-bold text-indigo-700">/əʊ/</div>
+                <div class="text-xs text-slate-600">phone</div>
+              </button>
+              <button onclick="speakWord('paper')" class="p-2 rounded-xl bg-cream hover:bg-indigo-50 border border-stone-200 transition">
+                <div class="font-mono font-bold text-indigo-700">/eɪ/</div>
+                <div class="text-xs text-slate-600">paper</div>
+              </button>
+              <button onclick="speakWord('boy')" class="p-2 rounded-xl bg-cream hover:bg-indigo-50 border border-stone-200 transition">
+                <div class="font-mono font-bold text-indigo-700">/ɔɪ/</div>
+                <div class="text-xs text-slate-600">boy</div>
+              </button>
+              <button onclick="speakWord('kite')" class="p-2 rounded-xl bg-cream hover:bg-indigo-50 border border-stone-200 transition col-span-2 sm:col-span-2">
+                <div class="font-mono font-bold text-indigo-700">/aɪ/</div>
+                <div class="text-xs text-slate-600">kite, bike</div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Concept 4: Schwa, Stress & Weak/Strong Forms + Linking /s/ -->
+          <div class="bg-white rounded-2xl border border-stone-200 p-5 sm:p-6 shadow-sm space-y-4">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <h4 class="text-lg font-bold text-slate-900">4. The Schwa /ə/ & Weak vs. Strong Forms</h4>
+                <span class="px-2.5 py-1 rounded-full bg-rose-50 text-rose-700 text-xs font-bold">Lesson 19</span>
+              </div>
+              <p class="text-sm text-slate-600 leading-relaxed mb-2">
+                <strong>/ə/</strong> is the most common English vowel. It is <strong>never stressed</strong> — always short, relaxed, and weak: <em>b<span class="text-rose-600 font-bold">a</span>nan<span class="text-rose-600 font-bold">a</span>, pepp<span class="text-rose-600 font-bold">er</span>, moth<span class="text-rose-600 font-bold">er</span>, <span class="text-rose-600 font-bold">a</span> glass <span class="text-rose-600 font-bold">of</span> wat<span class="text-rose-600 font-bold">er</span></em>.
+              </p>
+              <div class="bg-rose-50/60 border border-rose-100 rounded-xl p-3 text-xs space-y-1">
+                <div class="flex items-center justify-between">
+                  <span><strong>Weak form:</strong> "<strong>Can</strong> you sing?" → <span class="font-mono font-bold text-rose-700">/kən/</span></span>
+                  <button onclick="speakWord('Can you sing?')" class="text-rose-700 font-bold hover:underline">▶ Play</button>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span><strong>Strong form (at end):</strong> "Yes, I <strong>can</strong>." → <span class="font-mono font-bold text-indigo-700">/kæn/</span></span>
+                  <button onclick="speakWord('Yes, I can.')" class="text-indigo-700 font-bold hover:underline">▶ Play</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-3 border-t border-stone-100">
+              <div class="flex items-center justify-between mb-1.5">
+                <h4 class="text-base font-bold text-slate-900">5. Linking /s/ Across Words</h4>
+                <span class="px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700 text-xs font-bold">Lesson 20</span>
+              </div>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                When one word ends in <strong>/s/</strong> or <strong>/z/</strong> and the next starts with <strong>/s/</strong>, we connect them smoothly into one long /s/ instead of pausing:
+                <button onclick="speakWord('this seat, this suit, Sam\'s seat, Emma\'s sewing')" class="inline-flex items-center gap-1 ml-1 text-xs font-semibold text-indigo-600 hover:underline">▶ Hear examples</button>
+              </p>
+              <div class="flex flex-wrap gap-2 mt-2 text-xs font-semibold text-slate-700">
+                <span class="bg-cream px-2.5 py-1 rounded-lg border border-stone-200">this<span class="text-indigo-600">_</span>seat</span>
+                <span class="bg-cream px-2.5 py-1 rounded-lg border border-stone-200">this<span class="text-indigo-600">_</span>suit</span>
+                <span class="bg-cream px-2.5 py-1 rounded-lg border border-stone-200">Sam's<span class="text-indigo-600">_</span>seat</span>
+                <span class="bg-cream px-2.5 py-1 rounded-lg border border-stone-200">Emma's<span class="text-indigo-600">_</span>sewing</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1C. SILENT LETTERS & TRICKY SPELLINGS ACCORDION -->
+      <div class="bg-white rounded-2xl border border-stone-200 shadow-sm p-5 sm:p-7">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="w-8 h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center text-sm font-extrabold">C</span>
+          <div>
+            <h3 class="text-xl font-bold text-slate-900">Silent Letters & Tricky Spellings Reference</h3>
+            <p class="text-sm text-slate-500">English spelling doesn't always match pronunciation! Click any card to view rules and listen.</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="spelling-accordion">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================== -->
+    <!-- SECTION 2: SOUND EXPLORER & DIAGRAMS (ALL 20 LESSONS)      -->
+    <!-- ========================================================== -->
+    <section id="section-explorer" class="main-section hidden animate-fade-in space-y-6">
+      <div class="bg-white rounded-2xl border border-stone-200 shadow-sm p-5 sm:p-6">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-5">
+          <div>
+            <h2 class="text-2xl font-extrabold text-slate-900">Sound Explorer (Lessons 1–20)</h2>
+            <p class="text-sm text-slate-500 mt-0.5">Click any sound card to see its custom mouth diagram, "what touches what" guide, audio words, and minimal pairs.</p>
+          </div>
+          <!-- Search Box -->
+          <div class="relative w-full md:w-64">
+            <input type="text" id="sound-search" oninput="renderSoundGrid()" placeholder="Search word, sound, or lesson..."
+              class="w-full pl-9 pr-4 py-2 text-sm bg-cream border border-stone-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition" />
+            <svg class="w-4 h-4 text-slate-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Category Filter Pills -->
+        <div class="flex flex-wrap gap-2" id="category-filters">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Sound Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3.5" id="sound-grid">
+        <!-- Populated by JS -->
+      </div>
+    </section>
+
+    <!-- ========================================================== -->
+    <!-- SECTION 3: PRACTICE ARENA (5 INTERACTIVE ACTIVITIES)       -->
+    <!-- ========================================================== -->
+    <section id="section-practice" class="main-section hidden animate-fade-in space-y-6">
+      <!-- Arena Header & Sub-Tabs -->
+      <div class="bg-white rounded-2xl border border-stone-200 shadow-sm p-5 sm:p-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+          <div>
+            <h2 class="text-2xl font-extrabold text-slate-900">Practice Arena</h2>
+            <p class="text-sm text-slate-500">Test your ear and your knowledge with 5 fun, beginner-friendly activities!</p>
+          </div>
+          <div class="flex items-center gap-2 bg-amber-50 border border-amber-200 px-4 py-2 rounded-xl self-start sm:self-auto">
+            <span class="text-amber-500 text-lg">★</span>
+            <span class="text-sm font-bold text-amber-900">Practice Stars: <span id="arena-stars">0</span></span>
+          </div>
+        </div>
+
+        <!-- Activity Sub-Tabs -->
+        <div class="flex flex-wrap gap-2" id="practice-subtabs">
+          <button onclick="switchPracticeTab('mcq')" id="ptab-mcq" class="practice-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition bg-indigo-600 text-white shadow-sm">
+            1. MCQ Quiz (15)
+          </button>
+          <button onclick="switchPracticeTab('matching')" id="ptab-matching" class="practice-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition bg-stone-100 text-slate-700 hover:bg-stone-200">
+            2. Matching Game
+          </button>
+          <button onclick="switchPracticeTab('voicing')" id="ptab-voicing" class="practice-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition bg-stone-100 text-slate-700 hover:bg-stone-200">
+            3. Voiced vs. Unvoiced
+          </button>
+          <button onclick="switchPracticeTab('silent')" id="ptab-silent" class="practice-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition bg-stone-100 text-slate-700 hover:bg-stone-200">
+            4. Silent Letter Detective
+          </button>
+          <button onclick="switchPracticeTab('listening')" id="ptab-listening" class="practice-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition bg-stone-100 text-slate-700 hover:bg-stone-200">
+            5. Minimal Pairs Lab
+          </button>
+        </div>
+      </div>
+
+      <!-- Activity 1: MCQ Quiz -->
+      <div id="practice-mcq" class="practice-panel bg-white rounded-2xl border border-stone-200 shadow-sm p-5 sm:p-8 max-w-3xl mx-auto">
+        <!-- Populated by JS -->
+      </div>
+
+      <!-- Activity 2: Matching Game -->
+      <div id="practice-matching" class="practice-panel hidden bg-white rounded-2xl border border-stone-200 shadow-sm p-5 sm:p-8 max-w-4xl mx-auto">
+        <!-- Populated by JS -->
+      </div>
+
+      <!-- Activity 3: Voiced vs Unvoiced Sorter -->
+      <div id="practice-voicing" class="practice-panel hidden bg-white rounded-2xl border border-stone-200 shadow-sm p-5 sm:p-8 max-w-2xl mx-auto">
+        <!-- Populated by JS -->
+      </div>
+
+      <!-- Activity 4: Silent Letter Detective -->
+      <div id="practice-silent" class="practice-panel hidden bg-white rounded-2xl border border-stone-200 shadow-sm p-5 sm:p-8 max-w-3xl mx-auto">
+        <!-- Populated by JS -->
+      </div>
+
+      <!-- Activity 5: Minimal Pairs Listening Lab -->
+      <div id="practice-listening" class="practice-panel hidden bg-white rounded-2xl border border-stone-200 shadow-sm p-5 sm:p-8 max-w-2xl mx-auto">
+        <!-- Populated by JS -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== SOUND DETAIL MODAL ==================== -->
+  <div id="sound-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-5 bg-slate-900/60 backdrop-blur-sm overflow-y-auto" role="dialog" aria-modal="true">
+    <div class="bg-white rounded-3xl shadow-2xl border border-stone-200 w-full max-w-3xl max-h-[92vh] overflow-y-auto animate-fade-in relative my-auto">
+      <!-- Modal Sticky Top Bar -->
+      <div class="sticky top-0 z-10 bg-white/95 backdrop-blur border-b border-stone-100 px-5 sm:px-7 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <span id="modal-ipa" class="text-2xl sm:text-3xl font-mono font-extrabold text-indigo-700 bg-indigo-50 px-3.5 py-1 rounded-xl border border-indigo-100">/p/</span>
+          <div>
+            <h3 id="modal-title" class="text-lg sm:text-xl font-extrabold text-slate-900">pen</h3>
+            <p id="modal-subtitle" class="text-xs font-semibold text-slate-500">Lesson 1 • Stop / Plosive</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="navigateSoundModal(-1)" class="p-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-slate-700 transition" title="Previous sound">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
+          </button>
+          <button onclick="navigateSoundModal(1)" class="p-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-slate-700 transition" title="Next sound">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+          </button>
+          <button onclick="closeSoundModal()" class="p-2 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-600 transition ml-1" title="Close">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Modal Content -->
+      <div class="p-5 sm:p-7 space-y-6" id="modal-body">
+        <!-- Populated dynamically by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-stone-200 py-5 mt-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-xs text-slate-500">
+      <strong>Time to Pronounce</strong> — Interactive Beginner English Pronunciation Study Guide (Lessons 1–20). Tip: Put your fingers on your throat to feel voiced sounds!
+    </div>
+  </footer>
+
+  <!-- ==================== APPLICATION JAVASCRIPT ==================== -->
+  <script>
+    /* =========================================================================
+       1. SPEECH SYNTHESIS (AUDIO ENGINE) WITH GRACEFUL FALLBACK
+       ========================================================================= */
+    let speechRate = 1.0; // 1.0 = Normal, 0.65 = Slow
+    const hasSpeech = typeof window !== 'undefined' && 'speechSynthesis' in window;
+
+    if (!hasSpeech) {
+      document.getElementById('speech-warning').classList.remove('hidden');
+    }
+
+    function setSpeechRate(rate) {
+      speechRate = rate;
+      document.querySelectorAll('.speed-btn-normal').forEach(btn => {
+        btn.className = rate === 1.0
+          ? 'speed-btn-normal px-2.5 py-1 rounded-lg text-xs font-bold bg-indigo-600 text-white shadow-sm'
+          : 'speed-btn-normal px-2.5 py-1 rounded-lg text-xs font-semibold bg-stone-100 text-slate-600 hover:bg-stone-200';
+      });
+      document.querySelectorAll('.speed-btn-slow').forEach(btn => {
+        btn.className = rate < 1.0
+          ? 'speed-btn-slow px-2.5 py-1 rounded-lg text-xs font-bold bg-indigo-600 text-white shadow-sm'
+          : 'speed-btn-slow px-2.5 py-1 rounded-lg text-xs font-semibold bg-stone-100 text-slate-600 hover:bg-stone-200';
+      });
+    }
+
+    function speakWord(text, customRate = null) {
+      if (!hasSpeech) {
+        showToast('Audio playback is not supported in this browser.', 'amber');
+        return;
+      }
+      try {
+        window.speechSynthesis.cancel();
+        const utter = new SpeechSynthesisUtterance(text);
+        utter.lang = 'en-GB';
+        utter.rate = customRate !== null ? customRate : speechRate;
+        // Prefer an English voice if available
+        const voices = window.speechSynthesis.getVoices();
+        const enVoice = voices.find(v => v.lang.startsWith('en-GB')) || voices.find(v => v.lang.startsWith('en'));
+        if (enVoice) utter.voice = enVoice;
+        window.speechSynthesis.speak(utter);
+      } catch (err) {
+        console.error('Speech synthesis error:', err);
+      }
+    }
+
+    function speakPair(w1, w2) {
+      speakWord(`${w1} ... ${w2}`, 0.85);
+    }
+
+    function showToast(message, tone = 'indigo') {
+      const container = document.getElementById('toast-container');
+      const colors = {
+        indigo: 'bg-indigo-600 text-white',
+        teal: 'bg-teal-600 text-white',
+        amber: 'bg-amber-600 text-white',
+        rose: 'bg-rose-600 text-white'
+      };
+      const el = document.createElement('div');
+      el.className = `${colors[tone] || colors.indigo} px-4 py-2.5 rounded-xl shadow-lg text-xs sm:text-sm font-semibold animate-fade-in pointer-events-auto`;
+      el.textContent = message;
+      container.appendChild(el);
+      setTimeout(() => {
+        el.style.opacity = '0';
+        el.style.transition = 'opacity 0.3s ease';
+        setTimeout(() => el.remove(), 300);
+      }, 2400);
+    }
+
+    /* =========================================================================
+       2. PROGRESS & STATE TRACKING
+       ========================================================================= */
+    const appState = {
+      exploredSounds: new Set(),
+      stars: 0,
+      currentCategory: 'All',
+      currentSoundIndex: 0
+    };
+
+    function markSoundExplored(soundId) {
+      if (!appState.exploredSounds.has(soundId)) {
+        appState.exploredSounds.add(soundId);
+        updateProgressUI();
+      }
+    }
+
+    function addStars(count) {
+      appState.stars += count;
+      updateProgressUI();
+    }
+
+    function updateProgressUI() {
+      const total = SOUNDS_DATA.length;
+      const done = appState.exploredSounds.size;
+      const pct = Math.round((done / total) * 100);
+      document.getElementById('desktop-explored-text').textContent = `${done} / ${total} Sounds`;
+      document.getElementById('desktop-stars-text').textContent = appState.stars;
+      document.getElementById('desktop-progress-bar').style.width = `${pct}%`;
+      document.getElementById('mobile-progress-text').textContent = `${done}/${total} • ${appState.stars}★`;
+      document.getElementById('arena-stars').textContent = appState.stars;
+    }
+
+    /* =========================================================================
+       3. SECTION 1 DATA: SPEECH ORGANS & SILENT LETTERS / SPELLING
+       ========================================================================= */
+    const ORGANS_DATA = {
+      lips: {
+        num: 1,
+        name: 'Lips (Upper & Lower)',
+        role: 'Your lips can press tightly together to stop air, round into a small circle, or stretch into a smile.',
+        howItWorks: 'Press both lips together for /p/, /b/, and /m/. Round your lips for /w/, /u:/, and /ɔ:/. Spread your lips for /i:/. Let your bottom lip touch your top teeth for /f/ and /v/.',
+        tryIt: 'Press your lips together and pop out a puff of air: "pen" (/p/).',
+        sounds: ['/p/', '/b/', '/m/', '/f/', '/v/', '/w/', '/u:/', '/ɔ:/']
+      },
+      teeth: {
+        num: 2,
+        name: 'Upper & Lower Teeth',
+        role: 'Your top front teeth act as a contact point for your bottom lip or the tip of your tongue.',
+        howItWorks: 'Touch your top teeth lightly to your bottom lip for /f/ and /v/. Place the very tip of your tongue gently between your upper and lower teeth for /θ/ (three) and /ð/ (feather).',
+        tryIt: 'Put your tongue tip gently between your teeth and blow air: "three" (/θ/).',
+        sounds: ['/f/', '/v/', '/θ/', '/ð/']
+      },
+      alveolar: {
+        num: 3,
+        name: 'Alveolar Ridge',
+        role: 'This is the small bumpy ridge right behind your upper front teeth. It is one of the busiest spots in English!',
+        howItWorks: 'Your tongue tip taps or comes very close to this ridge to make /t/, /d/, /n/, /l/, /s/, and /z/.',
+        tryIt: 'Feel the bump behind your top teeth with your tongue tip, then say "tin" (/t/) and "door" (/d/).',
+        sounds: ['/t/', '/d/', '/n/', '/l/', '/s/', '/z/']
+      },
+      'hard-palate': {
+        num: 4,
+        name: 'Hard Palate (Roof of Mouth)',
+        role: 'The hard, arched roof in the middle of your mouth behind the alveolar ridge.',
+        howItWorks: 'The middle/front of your tongue rises toward the hard palate to shape /ʃ/ (shoe), /ʒ/ (television), /tʃ/ (chair), /dʒ/ (jam), and /j/ (yoga).',
+        tryIt: 'Slide your tongue slightly back from the ridge and say "shhh" (/ʃ/) like in "shoe".',
+        sounds: ['/ʃ/', '/ʒ/', '/tʃ/', '/dʒ/', '/j/', '/r/']
+      },
+      velum: {
+        num: 5,
+        name: 'Soft Palate (Velum)',
+        role: 'The soft, flexible area at the back of the roof of your mouth. It also acts like a door to your nose!',
+        howItWorks: 'The back of your tongue touches the soft palate for /k/, /g/, and /ŋ/ (ring). When the soft palate lowers, air flows out your nose for nasal sounds.',
+        tryIt: 'Raise the back of your tongue to touch the soft back of your mouth: "key" (/k/) and "girl" (/g/).',
+        sounds: ['/k/', '/g/', '/ŋ/']
+      },
+      tongue: {
+        num: 6,
+        name: 'Tongue (Tip, Blade & Back)',
+        role: 'The most flexible speech organ! Different parts of the tongue move up, down, forward, or backward to create almost every consonant and vowel.',
+        howItWorks: 'The TIP touches the teeth or ridge (/t, d, θ/). The BLADE shapes /s, z, ʃ/. The BACK touches the velum (/k, g, ŋ/) and moves high/low to shape all vowels.',
+        tryIt: 'Say "sheep" (/i:/, tongue high-front) then "heart" (/ɑ:/, tongue low-back). Feel it move!',
+        sounds: ['/i:/', '/æ/', '/ɑ:/', '/t/', '/k/', '/r/', '/l/']
+      },
+      nasal: {
+        num: 7,
+        name: 'Nasal Cavity (Nose)',
+        role: 'The air passage above your mouth. For three special English sounds, air escapes through your nose instead of your mouth.',
+        howItWorks: 'Close your mouth with your lips (/m/), tongue tip (/n/), or tongue back (/ŋ/), and let the voiced sound hum out through your nose.',
+        tryIt: 'Pinch your nose gently and try to say /m/ or /n/ — the sound stops because it needs your nose!',
+        sounds: ['/m/', '/n/', '/ŋ/']
+      },
+      vocal: {
+        num: 8,
+        name: 'Vocal Cords (Throat)',
+        role: 'Two tiny elastic bands inside your throat (larynx). They decide whether a sound is VOICED or UNVOICED.',
+        howItWorks: 'When they vibrate together, you get voiced sounds (/b, d, g, z, v, m, n.../) and all vowels. When they stay open, only air passes through for unvoiced sounds (/p, t, k, s, f, θ, ʃ, tʃ/).',
+        tryIt: 'Put your fingers on your throat. Say /s/ (still) then /z/ (buzzy vibration!).',
+        sounds: ['/b/', '/d/', '/g/', '/z/', '/v/', '/ð/', '/ʒ/', '/dʒ/']
+      }
+    };
+
+    const SPELLING_RULES = [
+      {
+        title: 'Silent B (-mb)',
+        badge: 'Lesson 1',
+        color: 'amber',
+        rule: 'When "b" comes after "m" at the end of a word (or root), the "b" is silent.',
+        examples: ['lamb', 'climb', 'thumb', 'comb', 'bomb', 'plumber', 'tomb']
+      },
+      {
+        title: 'Silent T (-sten / -stle)',
+        badge: 'Lesson 2',
+        color: 'amber',
+        rule: 'In words ending in -sten or -stle (and "often"), the letter "t" is silent.',
+        examples: ['listen', 'fasten', 'soften', 'whistle', 'castle', 'wrestle', 'often']
+      },
+      {
+        title: 'Silent K (kn-) & Silent G (gn-)',
+        badge: 'Lesson 4',
+        color: 'amber',
+        rule: '"k" is silent before "n" at the start of a word. "g" is silent before "n" in gn- words.',
+        examples: ['know', 'knife', 'knit', 'knot', 'knight', 'sign', 'design', 'gnome']
+      },
+      {
+        title: 'Silent N (-mn) & Silent L',
+        badge: 'Lesson 8',
+        color: 'amber',
+        rule: '"n" is silent after "m" at the end (-mn). "l" is silent in many -alk, -alf, -alm, and -ould words.',
+        examples: ['autumn', 'column', 'condemn', 'talk', 'walk', 'half', 'calm', 'could', 'should', 'would', 'folk']
+      },
+      {
+        title: 'Silent W (wr- / who-)',
+        badge: 'Lesson 14',
+        color: 'amber',
+        rule: '"w" is silent before "r" at the start of a word, and before "ho" in who/whole/whom.',
+        examples: ['wrong', 'write', 'wrinkle', 'wreck', 'who', 'whole', 'whom', 'whose']
+      },
+      {
+        title: 'Tricky /f/ Spellings: ph & gh',
+        badge: 'Lesson 1 & 7',
+        color: 'indigo',
+        rule: '"ph" is almost always pronounced /f/ (NOT /p/). "gh" can be /f/ in words like laugh, cough, enough.',
+        examples: ['photo', 'phone', 'elephant', 'photograph', 'laugh', 'cough', 'enough', 'tough']
+      },
+      {
+        title: 'Tricky /k/ Spellings: c, k, ck, ch, x',
+        badge: 'Lesson 4',
+        color: 'indigo',
+        rule: 'ca/co/cu = /k/; ck comes after short vowels (back); ch = /k/ in Greek-origin words; x = /ks/.',
+        examples: ['cat', 'coat', 'back', 'clock', 'school', 'chemistry', 'mechanic', 'ache', 'six', 'taxi']
+      },
+      {
+        title: 'Tricky /s/ & /z/ Spellings',
+        badge: 'Lesson 6',
+        color: 'indigo',
+        rule: 'ce, ci, cy make /s/. The letter "s" is often pronounced /z/ in common words.',
+        examples: ['center', 'cinema', 'bicycle', 'pencil', 'is', 'his', 'please', 'cousin', 'because']
+      },
+      {
+        title: 'Voiced /ð/ vs. Unvoiced /θ/ ("th")',
+        badge: 'Lesson 10',
+        color: 'teal',
+        rule: 'Voiced /ð/ in grammar/function words (this, that, the, with) & middle -ther (mother). Unvoiced /θ/ in nouns/verbs/endings (think, tooth, bath). Exceptions: through /θ/, smooth /ð/.',
+        examples: ['this', 'that', 'mother', 'father', 'feather', 'think', 'three', 'tooth', 'mouth']
+      },
+      {
+        title: 'Tricky /ʃ/ & /ʒ/ Spellings',
+        badge: 'Lesson 11',
+        color: 'teal',
+        rule: '/ʃ/ is spelled sh, tion, cian, cial, tient, ssion. /ʒ/ is spelled sion, su (measure), or ge (garage).',
+        examples: ['nation', 'social', 'patient', 'ocean', 'mission', 'television', 'decision', 'measure', 'garage']
+      }
+    ];
+
+    /* =========================================================================
+       4. SECTION 2 DATA: ALL 20 LESSONS (41 SOUNDS)
+       ========================================================================= */
+    const SOUNDS_DATA = [
+      // Lesson 1
+      {
+        id: 'p', lesson: 1, ipa: '/p/', keyword: 'pen', category: 'Stops / Plosives', voiced: false,
+        diagramType: 'bilabial-stop',
+        whatTouches: 'Press both lips tightly together to block the air, then release with a quick puff of air. No voice!',
+        examples: ['pen', 'pencils', 'paper', 'laptop', 'printer', 'lamp'],
+        minimalPairs: [['pin', 'bin'], ['pear', 'bear'], ['pea', 'bee'], ['cap', 'cab']],
+        spellingTip: 'Watch out! "ph" in photo, phone, elephant makes /f/, NOT /p/.'
+      },
+      {
+        id: 'b', lesson: 1, ipa: '/b/', keyword: 'book', category: 'Stops / Plosives', voiced: true,
+        diagramType: 'bilabial-stop',
+        whatTouches: 'Same lip position as /p/: press both lips tightly together, then release — but turn your VOICE ON so your throat vibrates!',
+        examples: ['book', 'bin', 'bear', 'bee', 'cab', 'bag'],
+        minimalPairs: [['pin', 'bin'], ['pear', 'bear'], ['pea', 'bee'], ['cap', 'cab']],
+        spellingTip: 'Silent /b/: Do NOT pronounce "b" after "m" in lamb, climb, thumb, comb, bomb, plumber, tomb.'
+      },
+      // Lesson 2
+      {
+        id: 't', lesson: 2, ipa: '/t/', keyword: 'tin', category: 'Stops / Plosives', voiced: false,
+        diagramType: 'alveolar-stop',
+        whatTouches: 'Press the tip of your tongue firmly against the alveolar ridge (bump behind your upper teeth), then pop it down with a puff of air. No voice!',
+        examples: ['tin', 'telephone', 'table', 'letter', 'cat', 'student'],
+        minimalPairs: [['tennis', 'Dennis'], ['write', 'ride'], ['cart', 'card'], ['white', 'wide']],
+        spellingTip: 'Silent /t/: Watch out for -sten and -stle words: listen, fasten, soften, whistle, castle, often.'
+      },
+      {
+        id: 'd', lesson: 2, ipa: '/d/', keyword: 'door', category: 'Stops / Plosives', voiced: true,
+        diagramType: 'alveolar-stop',
+        whatTouches: 'Press the tip of your tongue against the alveolar ridge behind your top teeth, then release while vibrating your vocal cords.',
+        examples: ['door', 'Dennis', 'ride', 'card', 'wide', 'desk'],
+        minimalPairs: [['tennis', 'Dennis'], ['write', 'ride'], ['cart', 'card'], ['white', 'wide']],
+        spellingTip: 'Put your fingers on your throat: /t/ is just air, /d/ vibrates!'
+      },
+      // Lesson 3
+      {
+        id: 'i-long', lesson: 3, ipa: '/i:/', keyword: 'sheep', category: 'Long Vowels', voiced: true,
+        diagramType: 'vowel-high-front',
+        whatTouches: 'Raise the front of your tongue very high toward the roof of your mouth and stretch your lips into a wide smile. Hold it L-O-N-G!',
+        examples: ['sheep', 'cheese', 'beef', 'green tea', 'three', 'meat'],
+        minimalPairs: [['sheep', 'ship'], ['bean', 'bin'], ['meal', 'mill'], ['heel', 'hill']],
+        spellingTip: 'Often spelled ee (peel), ea (meat), e_e (Steve), or e (be). Exceptions: bread, head, heavy use /e/.'
+      },
+      {
+        id: 'i-short', lesson: 3, ipa: '/ɪ/', keyword: 'ship', category: 'Short Vowels', voiced: true,
+        diagramType: 'vowel-mid-high-front',
+        whatTouches: 'Lower your tongue slightly from /i:/ and relax your lips (less smiling). Keep the sound quick and SHORT.',
+        examples: ['ship', 'bin', 'mill', 'hill', 'dip', 'bit'],
+        minimalPairs: [['sheep', 'ship'], ['bean', 'bin'], ['meal', 'mill'], ['heel', 'hill']],
+        spellingTip: 'Usually spelled with a single "i" in short closed syllables (ship, sit, big).'
+      },
+      // Lesson 4
+      {
+        id: 'k', lesson: 4, ipa: '/k/', keyword: 'key', category: 'Stops / Plosives', voiced: false,
+        diagramType: 'velar-stop',
+        whatTouches: 'Raise the back of your tongue to touch the soft palate (velum) at the back of your mouth, then release with a puff of air. No voice!',
+        examples: ['key', 'clinic', 'clock', 'coat', 'back', 'school'],
+        minimalPairs: [['class', 'glass'], ['coat', 'goat'], ['curl', 'girl'], ['back', 'bag']],
+        spellingTip: 'Spelled c (cat), k (keep), ck after short vowels (back), ch (ache, school), x=/ks/ (six). Silent k in know, knife, knit.'
+      },
+      {
+        id: 'g', lesson: 4, ipa: '/g/', keyword: 'girl', category: 'Stops / Plosives', voiced: true,
+        diagramType: 'velar-stop',
+        whatTouches: 'Raise the back of your tongue to touch the soft palate (just like /k/), then release with your VOICE ON.',
+        examples: ['girl', 'glass', 'goat', 'bag', 'garage', 'get'],
+        minimalPairs: [['class', 'glass'], ['coat', 'goat'], ['curl', 'girl'], ['back', 'bag']],
+        spellingTip: 'Silent /g/: Do not pronounce "g" before "n" in sign, design, gnome, gnarl.'
+      },
+      // Lesson 5
+      {
+        id: 'e', lesson: 5, ipa: '/e/', keyword: 'pen', category: 'Short Vowels', voiced: true,
+        diagramType: 'vowel-mid-front',
+        whatTouches: 'Open your mouth a bit wider than /ɪ/. The front of your tongue sits in the middle height, relaxed. Keep it short.',
+        examples: ['pen', 'ten', 'bell', 'men', 'better', 'second'],
+        minimalPairs: [['pin', 'pen'], ['tin', 'ten'], ['pen', 'pan'], ['men', 'man']],
+        spellingTip: 'Usually spelled "e" (pen, ten), and sometimes "ea" (bread, head).'
+      },
+      {
+        id: 'ae', lesson: 5, ipa: '/æ/', keyword: 'man', category: 'Short Vowels', voiced: true,
+        diagramType: 'vowel-low-front',
+        whatTouches: 'Drop your jaw wide open! Press the front of your tongue low and forward, with lips slightly stretched.',
+        examples: ['man', 'apple', 'pan', 'cap', 'cat', 'hat'],
+        minimalPairs: [['pen', 'pan'], ['men', 'man'], ['cap', 'cup'], ['hat', 'hut']],
+        spellingTip: 'Almost always spelled with a single "a" between consonants (cat, man, apple).'
+      },
+      {
+        id: 'uh', lesson: 5, ipa: '/ʌ/', keyword: 'cup', category: 'Short Vowels', voiced: true,
+        diagramType: 'vowel-mid-central',
+        whatTouches: 'Relax your tongue in the center-low part of your mouth with lips relaxed and unrounded. Make a short, natural "uh" sound.',
+        examples: ['cup', 'hut', 'cut', 'fun', 'love', 'bus'],
+        minimalPairs: [['cap', 'cup'], ['hat', 'hut'], ['cat', 'cut'], ['fan', 'fun']],
+        spellingTip: 'Usually spelled "u" (cup, fun) or sometimes "o" (love, mother, son).'
+      },
+      // Lesson 6
+      {
+        id: 's', lesson: 6, ipa: '/s/', keyword: 'sun', category: 'Fricatives', voiced: false,
+        diagramType: 'alveolar-fricative',
+        whatTouches: 'Bring the tip/blade of your tongue very close to the alveolar ridge (do not seal it completely). Push a steady stream of air through the narrow gap like a snake hiss. No voice!',
+        examples: ['sun', 'bus', 'glass', 'horse', 'bicycle', 'pencil'],
+        minimalPairs: [['Sue', 'zoo'], ['bus', 'buzz'], ['sip', 'zip'], ['price', 'prize']],
+        spellingTip: 'Remember: ce, ci, cy make /s/ (center, cinema, bicycle, pencil).'
+      },
+      {
+        id: 'z', lesson: 6, ipa: '/z/', keyword: 'zoo', category: 'Fricatives', voiced: true,
+        diagramType: 'alveolar-fricative',
+        whatTouches: 'Keep the exact same tongue position as /s/, very close to the alveolar ridge, and turn your VOICE ON so it buzzes like a bee!',
+        examples: ['zoo', 'buzz', 'zip', 'prize', 'please', 'cousin'],
+        minimalPairs: [['Sue', 'zoo'], ['bus', 'buzz'], ['sip', 'zip'], ['price', 'prize']],
+        spellingTip: 'The letter "s" is often pronounced /z/: is, his, cousin, husband, please, use, because.'
+      },
+      // Lesson 7
+      {
+        id: 'f', lesson: 7, ipa: '/f/', keyword: 'fish', category: 'Fricatives', voiced: false,
+        diagramType: 'labiodental-fricative',
+        whatTouches: 'Gently touch your upper front teeth onto your lower lip. Blow air steadily through the small gap. No voice!',
+        examples: ['fish', 'flowers', 'fire', 'fork', 'phone', 'laugh'],
+        minimalPairs: [['ferry', 'very'], ['fan', 'van'], ['leaf', 'leave'], ['fine', 'vine']],
+        spellingTip: 'Spelled f/ff (fish, office), ph (phone, elephant), and sometimes gh (laugh, enough, cough).'
+      },
+      {
+        id: 'v', lesson: 7, ipa: '/v/', keyword: 'van', category: 'Fricatives', voiced: true,
+        diagramType: 'labiodental-fricative',
+        whatTouches: 'Touch your upper front teeth gently to your lower lip (just like /f/), and vibrate your vocal cords (VOICE ON)!',
+        examples: ['van', 'very', 'five', 'seven', 'vase', 'twelve'],
+        minimalPairs: [['ferry', 'very'], ['fan', 'van'], ['leaf', 'leave'], ['few', 'view']],
+        spellingTip: 'Don\'t confuse /v/ (teeth on lip) with /w/ (rounded lips): vet vs. wet!'
+      },
+      // Lesson 8
+      {
+        id: 'm', lesson: 8, ipa: '/m/', keyword: 'mouth', category: 'Nasals & Liquids', voiced: true,
+        diagramType: 'bilabial-nasal',
+        whatTouches: 'Close both lips gently together so no air leaves your mouth. Let the voiced humming sound come out through your NOSE.',
+        examples: ['mouth', 'supermarket', 'farm', 'museum', 'home', 'cinema'],
+        minimalPairs: [['mice', 'nice'], ['Tim', 'tin'], ['mummy', 'money'], ['mine', 'nine']],
+        spellingTip: 'Put your fingers on your nose or throat — both vibrate for /m/!'
+      },
+      {
+        id: 'n', lesson: 8, ipa: '/n/', keyword: 'nose', category: 'Nasals & Liquids', voiced: true,
+        diagramType: 'alveolar-nasal',
+        whatTouches: 'Press the tip of your tongue against the alveolar ridge behind your top teeth to block your mouth, and let the voiced sound flow out through your NOSE.',
+        examples: ['nose', 'nice', 'nine', 'night', 'fan', 'win'],
+        minimalPairs: [['mice', 'nice'], ['night', 'light'], ['fan', 'fang'], ['win', 'wing']],
+        spellingTip: 'Silent /n/: "n" is silent after "m" at the end of column, autumn, condemn.'
+      },
+      {
+        id: 'l', lesson: 8, ipa: '/l/', keyword: 'letter', category: 'Nasals & Liquids', voiced: true,
+        diagramType: 'alveolar-lateral',
+        whatTouches: 'Touch the tip of your tongue firmly to the alveolar ridge, while letting voiced air flow smoothly around the SIDES of your tongue.',
+        examples: ['letter', 'light', 'line', 'jelly', 'bill', 'yellow'],
+        minimalPairs: [['night', 'light'], ['nine', 'line'], ['long', 'wrong'], ['glass', 'grass']],
+        spellingTip: 'Silent /l/: talk, walk, half, calm, could, should, would, folk, salmon, chalk.'
+      },
+      {
+        id: 'ng', lesson: 8, ipa: '/ŋ/', keyword: 'ring', category: 'Nasals & Liquids', voiced: true,
+        diagramType: 'velar-nasal',
+        whatTouches: 'Raise the back of your tongue to touch the soft palate (velum) while keeping your mouth open, and let the voiced sound flow out through your NOSE.',
+        examples: ['ring', 'fang', 'wrong', 'wing', 'sing', 'cling'],
+        minimalPairs: [['fan', 'fang'], ['Ron', 'wrong'], ['win', 'wing']],
+        spellingTip: 'Usually spelled "ng" at the end of words (sing, ring). Do not add a hard /g/ pop at the end.'
+      },
+      // Lesson 9
+      {
+        id: 'o-short', lesson: 9, ipa: '/ɒ/', keyword: 'clock', category: 'Short Vowels', voiced: true,
+        diagramType: 'vowel-low-back',
+        whatTouches: 'Open your mouth wide, pull your tongue low and to the back, and round your lips just slightly. Keep it SHORT.',
+        examples: ['clock', 'cot', 'pot', 'sock', 'rock', 'fox'],
+        minimalPairs: [['cat', 'cot'], ['sack', 'sock'], ['Don', 'Dawn'], ['pot', 'port']],
+        spellingTip: 'Commonly spelled "o" in short closed syllables (hot, clock, box, sock).'
+      },
+      {
+        id: 'o-long', lesson: 9, ipa: '/ɔ:/', keyword: 'ball', category: 'Long Vowels', voiced: true,
+        diagramType: 'vowel-mid-back-round',
+        whatTouches: 'Pull the back of your tongue slightly higher than /ɒ/ and push your lips forward into a firm rounded circle. Hold it L-O-N-G!',
+        examples: ['ball', 'Dawn', 'port', 'forks', 'sports', 'tall'],
+        minimalPairs: [['Don', 'Dawn'], ['pot', 'port'], ['fox', 'forks'], ['spots', 'sports']],
+        spellingTip: 'Notice spellings: al (ball, tall), aw (saw), or (born, port), au (taut), ough (thought, brought).'
+      },
+      // Lesson 10
+      {
+        id: 'th-unvoiced', lesson: 10, ipa: '/θ/', keyword: 'three', category: 'Fricatives', voiced: false,
+        diagramType: 'dental-fricative',
+        whatTouches: 'Place the very tip of your tongue gently between your upper and lower front teeth. Blow air softly past the tongue tip. No voice!',
+        examples: ['three', 'mouth', 'thumb', 'thick', 'think', 'tooth'],
+        minimalPairs: [['mouse', 'mouth'], ['sum', 'thumb'], ['sick', 'thick'], ['sink', 'think']],
+        spellingTip: 'Unvoiced "th" usually appears in nouns, verbs, adjectives, and word endings (think, tooth, bath).'
+      },
+      {
+        id: 'th-voiced', lesson: 10, ipa: '/ð/', keyword: 'feather', category: 'Fricatives', voiced: true,
+        diagramType: 'dental-fricative',
+        whatTouches: 'Put the tip of your tongue gently between your front teeth (exact same spot as /θ/), and turn your VOICE ON so it buzzes!',
+        examples: ['feather', 'mother', 'father', 'brother', 'this', 'these'],
+        minimalPairs: [['think', 'this'], ['three', 'the'], ['mouth', 'mother']],
+        spellingTip: 'Voiced "th" occurs in grammar words (this, that, the, they, with) and middle -ther (mother, feather).'
+      },
+      // Lesson 11
+      {
+        id: 'sh', lesson: 11, ipa: '/ʃ/', keyword: 'shoe', category: 'Fricatives', voiced: false,
+        diagramType: 'postalveolar-fricative',
+        whatTouches: 'Pull your tongue slightly back behind the alveolar ridge toward the hard palate, and push your lips forward slightly. Blow air smoothly ("shhh"). No voice!',
+        examples: ['shoe', 'she', 'sheet', 'shirt', 'shower', 'nation'],
+        minimalPairs: [['sea', 'she'], ['Sue', 'shoe'], ['seat', 'sheet'], ['sack', 'shack']],
+        spellingTip: 'Tricky spellings for /ʃ/: sh, tion (nation), cian (physician), cial (social), tient (patient), ssion (mission).'
+      },
+      {
+        id: 'zh', lesson: 11, ipa: '/ʒ/', keyword: 'television', category: 'Fricatives', voiced: true,
+        diagramType: 'postalveolar-fricative',
+        whatTouches: 'Use the exact same mouth and slightly rounded lip position as /ʃ/, and turn your VOICE ON for a smooth buzzing sound.',
+        examples: ['television', 'usually', 'decision', 'measure', 'pleasure', 'garage'],
+        minimalPairs: [['mission', 'decision'], ['pressure', 'pleasure']],
+        spellingTip: 'Spelled -sion (decision, vision), -su- (measure, treasure), and -ge (beige, garage, massage).'
+      },
+      // Lesson 12
+      {
+        id: 'ch', lesson: 12, ipa: '/tʃ/', keyword: 'chair', category: 'Affricates', voiced: false,
+        diagramType: 'affricate',
+        whatTouches: 'Combine /t/ + /ʃ/! First press your tongue tip against the ridge to stop the air, then quickly release it into a "sh" puff. No voice!',
+        examples: ['chair', 'chips', 'chop', 'cheap', 'watch', 'cheese'],
+        minimalPairs: [['ships', 'chips'], ['shop', 'chop'], ['sheep', 'cheap'], ['wash', 'watch']],
+        spellingTip: 'Usually spelled "ch" (chair, cheese) or "tch" (watch, butcher).'
+      },
+      {
+        id: 'dj', lesson: 12, ipa: '/dʒ/', keyword: 'jam', category: 'Affricates', voiced: true,
+        diagramType: 'affricate',
+        whatTouches: 'Combine /d/ + /ʒ/! Press your tongue against the ridge just like /tʃ/, then release with your VOICE ON.',
+        examples: ['jam', 'Jerry', 'jeep', 'joking', 'cabbage', 'Japanese'],
+        minimalPairs: [['Cherry', 'Jerry'], ['cheap', 'jeep'], ['choking', 'joking'], ['cheering', 'jeering']],
+        spellingTip: 'Often spelled "j" (jam, jeep), "g" before e/i/y (cabbage, orange), or "dge".'
+      },
+      // Lesson 13
+      {
+        id: 'u-short', lesson: 13, ipa: '/ʊ/', keyword: 'book', category: 'Short Vowels', voiced: true,
+        diagramType: 'vowel-mid-high-back',
+        whatTouches: 'Raise the back of your tongue fairly high, with lips loosely rounded (relaxed, not tight). Keep it SHORT.',
+        examples: ['book', 'look', 'pull', 'good', 'cook', 'foot'],
+        minimalPairs: [['lock', 'look'], ['box', 'books'], ['pull', 'pool'], ['look', 'Luke']],
+        spellingTip: 'Usually spelled "oo" (book, good, foot) or "u" (put, pull, full).'
+      },
+      {
+        id: 'u-long', lesson: 13, ipa: '/u:/', keyword: 'moon', category: 'Long Vowels', voiced: true,
+        diagramType: 'vowel-high-back-round',
+        whatTouches: 'Raise the back of your tongue very high and purse your lips tightly into a small round circle. Hold it L-O-N-G!',
+        examples: ['moon', 'pool', 'school', 'tool', 'tooth', 'blue'],
+        minimalPairs: [['pull', 'pool'], ['look', 'Luke'], ['full', 'fool']],
+        spellingTip: 'Spelled oo (moon, cool), ue (true, blue), ew (stew, crew), u_e (flute, Luke).'
+      },
+      // Lesson 14
+      {
+        id: 'w', lesson: 14, ipa: '/w/', keyword: 'window', category: 'Approximants', voiced: true,
+        diagramType: 'bilabial-approx',
+        whatTouches: 'Round your lips tightly into a small "o" (like /u:/), without letting your teeth touch your lip! Then glide quickly into the next vowel with VOICE ON.',
+        examples: ['window', 'wet', 'wine', 'whale', 'watch', 'twelve'],
+        minimalPairs: [['vet', 'wet'], ['vine', 'wine'], ['veil', 'whale']],
+        spellingTip: 'Silent /w/: "w" is silent before "r" (wrong, write, wreck) and before "ho" (who, whole, whose).'
+      },
+      {
+        id: 'r', lesson: 14, ipa: '/r/', keyword: 'rain', category: 'Approximants', voiced: true,
+        diagramType: 'postalveolar-approx',
+        whatTouches: 'Curl the tip of your tongue slightly back toward the hard palate — make sure it does NOT touch the roof of your mouth! Lips round slightly, VOICE ON.',
+        examples: ['rain', 'wrong', 'right', 'Jerry', 'grass', 'room'],
+        minimalPairs: [['long', 'wrong'], ['light', 'right'], ['jelly', 'Jerry'], ['glass', 'grass']],
+        spellingTip: 'Unlike /l/, your tongue tip never touches the alveolar ridge for English /r/.'
+      },
+      {
+        id: 'j', lesson: 14, ipa: '/j/', keyword: 'yoga', category: 'Approximants', voiced: true,
+        diagramType: 'palatal-approx',
+        whatTouches: 'Raise the middle/front of your tongue very close to the hard palate (like a quick /i:/), then glide smoothly into the following vowel with VOICE ON.',
+        examples: ['yoga', 'yes', 'yam', 'Yasmin', 'yummy', 'yellow'],
+        minimalPairs: [['Jess', 'yes'], ['jam', 'yam']],
+        spellingTip: 'In IPA, /j/ is the "y" sound in "yes" and "yoga" — NOT the "j" in "jam" (/dʒ/)!'
+      },
+      // Lesson 15
+      {
+        id: 'a-long', lesson: 15, ipa: '/ɑ:/', keyword: 'heart', category: 'Long Vowels', voiced: true,
+        diagramType: 'vowel-low-back-open',
+        whatTouches: 'Open your mouth wide and keep your tongue flat, low, and back (like when a doctor says "say ahh"). Hold it L-O-N-G!',
+        examples: ['heart', 'cart', 'garden', 'car', 'tomatoes', 'grass'],
+        minimalPairs: [['cat', 'cart'], ['hat', 'heart'], ['cut', 'cart'], ['hut', 'heart']],
+        spellingTip: 'Often spelled ar (car, garden, smart) or a (grass, bananas, glasses).'
+      },
+      {
+        id: 'er-long', lesson: 15, ipa: '/ɜ:/', keyword: 'girl', category: 'Long Vowels', voiced: true,
+        diagramType: 'vowel-mid-central-long',
+        whatTouches: 'Keep your tongue in the center of your mouth, slightly raised, with relaxed neutral lips. Hold it L-O-N-G!',
+        examples: ['girl', 'Pearl', 'shirt', 'work', 'bird', 'early'],
+        minimalPairs: [['Paul', 'Pearl'], ['shorts', 'shirts'], ['walk', 'work'], ['board', 'bird']],
+        spellingTip: 'Spelled ur (nurse, burn), ir (girl, bird), er (term), ear (learn, early), or (work, worm).'
+      },
+      // Lesson 16
+      {
+        id: 'ia', lesson: 16, ipa: '/ɪə/', keyword: 'ear', category: 'Diphthongs', voiced: true,
+        diagramType: 'diphthong-ia',
+        whatTouches: 'Start with your tongue high-front at /ɪ/ and smoothly glide backward/downward to a relaxed center /ə/.',
+        examples: ['ear', 'beard', 'here', 'year', 'near', 'idea'],
+        minimalPairs: [['bead', 'beard'], ['bee', 'beer'], ['cheer', 'chair'], ['here', 'hair']],
+        spellingTip: 'Spelled ear (clear, dear), ere (here), eer (beer, career), ea (idea), ie (experience).'
+      },
+      {
+        id: 'ea', lesson: 16, ipa: '/eə/', keyword: 'chair', category: 'Diphthongs', voiced: true,
+        diagramType: 'diphthong-ea',
+        whatTouches: 'Start with your mouth more open at /e/ and smoothly glide your tongue back to the relaxed center /ə/.',
+        examples: ['chair', 'pear', 'hair', 'where', 'airport', 'square'],
+        minimalPairs: [['cheer', 'chair'], ['pier', 'pear'], ['here', 'hair'], ['clear', 'Claire']],
+        spellingTip: 'Spelled air (chair, hair, pair), are (square, care), ere (where, there).'
+      },
+      // Lesson 17
+      {
+        id: 'au', lesson: 17, ipa: '/aʊ/', keyword: 'house', category: 'Diphthongs', voiced: true,
+        diagramType: 'diphthong-au',
+        whatTouches: 'Start with your jaw open wide (/a/) and smoothly glide upward while rounding your lips into /ʊ/.',
+        examples: ['house', 'cow', 'brown', 'town', 'flower', 'mouse'],
+        minimalPairs: [['car', 'cow'], ['can\'t', 'count']],
+        spellingTip: 'Spelled ou (house, mouse, round) or ow (cow, brown, town, flower).'
+      },
+      {
+        id: 'ou', lesson: 17, ipa: '/əʊ/', keyword: 'phone', category: 'Diphthongs', voiced: true,
+        diagramType: 'diphthong-ou',
+        whatTouches: 'Start with a relaxed central mouth /ə/, then smoothly round your lips forward into /ʊ/.',
+        examples: ['phone', 'boat', 'coat', 'cold', 'nose', 'snow'],
+        minimalPairs: [['Bert', 'boat'], ['girl', 'goal'], ['saw', 'sew'], ['court', 'coat']],
+        spellingTip: 'Spelled o_e (phone, home, nose), oa (boat, coat), ow (snow, know, slow).'
+      },
+      // Lesson 18
+      {
+        id: 'ei', lesson: 18, ipa: '/eɪ/', keyword: 'paper', category: 'Diphthongs', voiced: true,
+        diagramType: 'diphthong-ei',
+        whatTouches: 'Start with your mouth mid-open at /e/, then smoothly lift the front of your tongue upward toward /ɪ/ with a slight smile.',
+        examples: ['paper', 'rain', 'cake', 'train', 'table', 'station'],
+        minimalPairs: [['pepper', 'paper'], ['sell', 'sail'], ['pen', 'pain'], ['shed', 'shade']],
+        spellingTip: 'Spelled a_e (cake, make), ai (rain, train), ay (May, play), eigh (eight), -ation (station).'
+      },
+      {
+        id: 'oi', lesson: 18, ipa: '/ɔɪ/', keyword: 'boy', category: 'Diphthongs', voiced: true,
+        diagramType: 'diphthong-oi',
+        whatTouches: 'Start with rounded lips at /ɔ:/, then smoothly spread your lips and lift the front of your tongue toward /ɪ/.',
+        examples: ['boy', 'toy', 'noisy', 'voice', 'coins', 'oil'],
+        minimalPairs: [['bee', 'boy'], ['tea', 'toy'], ['eel', 'oil']],
+        spellingTip: 'Very reliable spelling: "oi" (voice, coin, oil) or "oy" (boy, toy, enjoy).'
+      },
+      {
+        id: 'ai', lesson: 18, ipa: '/aɪ/', keyword: 'kite', category: 'Diphthongs', voiced: true,
+        diagramType: 'diphthong-ai',
+        whatTouches: 'Start with your jaw wide open at /a/, then smoothly lift your tongue high-front toward /ɪ/.',
+        examples: ['kite', 'bike', 'ice cream', 'smiling', 'driving', 'night'],
+        minimalPairs: [['bark', 'bike'], ['cart', 'kite'], ['guard', 'guide']],
+        spellingTip: 'Spelled i_e (kite, time), igh (night, fight), ign (sign), or final -y (try, fly, why).'
+      },
+      // Lesson 19
+      {
+        id: 'schwa', lesson: 19, ipa: '/ə/', keyword: 'banana', category: 'Schwa & Linking', voiced: true,
+        diagramType: 'vowel-schwa',
+        whatTouches: 'Completely relax your tongue, jaw, and lips in the dead center of your mouth. Make a very quick, weak, unstressed "uh".',
+        examples: ['banana', 'pepper', 'butter', 'mother', 'sister', 'newspaper'],
+        minimalPairs: [['Can you sing? (/kən/)', 'Yes, I can. (/kæn/)']],
+        spellingTip: 'Any vowel letter (a, e, i, o, u) can become /ə/ when unstressed! Remember: /ə/ is NEVER stressed.'
+      },
+      // Lesson 20
+      {
+        id: 'linking-s', lesson: 20, ipa: 's_s', keyword: 'this skirt', category: 'Schwa & Linking', voiced: false,
+        diagramType: 'alveolar-fricative',
+        whatTouches: 'Keep your tongue tip near the alveolar ridge for /s/ and smoothly hold it across the word boundary without stopping between the two words!',
+        examples: ['this seat', 'this suit', 'this street', 'Sam\'s seat', 'Emma\'s sewing'],
+        minimalPairs: [['this seat', 'this suit'], ['Sam\'s seat', 'Sam\'s supper']],
+        spellingTip: 'In natural English, "this seat" sounds like one smooth phrase: "this_seat".'
+      }
+    ];
+
+    /* =========================================================================
+       5. DYNAMIC CUSTOM SVG MOUTH DIAGRAM GENERATOR FOR EACH SOUND
+       ========================================================================= */
+    function generateMouthSVG(sound) {
+      const type = sound.diagramType;
+      const isVoiced = sound.voiced;
+
+      // Default tongue path (relaxed center)
+      let tonguePath = 'M 106 168 C 115 148, 148 134, 185 135 C 218 136, 238 152, 244 182 L 236 226 L 185 226 C 175 198, 145 182, 114 176 Z';
+      let upperLipPath = 'M 74 128 C 82 128, 88 134, 88 142 C 80 144, 72 143, 70 137 Z';
+      let lowerLipPath = 'M 72 162 C 80 159, 88 162, 90 171 C 84 178, 74 178, 72 170 Z';
+      let airflowSVG = '';
+      let lipBadge = 'Neutral Lips';
+      let contactDot = '';
+
+      // Airflow arrow helper
+      const oralAir = `<path d="M 254 150 Q 225 110 155 115 L 62 150" fill="none" stroke="#4F46E5" stroke-width="2.5" stroke-dasharray="5 4" marker-end="url(#arrowHead)" />`;
+      const nasalAir = `<path d="M 254 150 Q 252 92 205 84 L 78 96" fill="none" stroke="#0284C7" stroke-width="2.8" stroke-dasharray="5 4" marker-end="url(#arrowHeadBlue)" />`;
+
+      switch (type) {
+        case 'bilabial-stop':
+          // Lips pressed closed!
+          upperLipPath = 'M 74 134 C 84 134, 90 142, 90 151 C 82 152, 74 152, 72 145 Z';
+          lowerLipPath = 'M 72 152 C 82 151, 90 153, 90 163 C 84 170, 74 170, 72 162 Z';
+          contactDot = `<circle cx="81" cy="151" r="6" fill="#EF4444" opacity="0.85" />`;
+          airflowSVG = `<path d="M 248 148 Q 210 112 135 124 L 96 146" fill="none" stroke="#4F46E5" stroke-width="2.5" stroke-dasharray="5 3" />
+                        <path d="M 65 151 L 34 151" fill="none" stroke="#D97706" stroke-width="3" marker-end="url(#arrowHeadAmber)" />`;
+          lipBadge = 'Both Lips Pressed → Pop!';
+          break;
+
+        case 'alveolar-stop':
+          // Tongue tip firmly touching alveolar ridge
+          tonguePath = 'M 105 136 C 110 120, 128 118, 168 128 C 208 138, 236 154, 244 184 L 236 226 L 185 226 C 175 198, 145 182, 114 176 Z';
+          contactDot = `<circle cx="115" cy="126" r="6" fill="#EF4444" opacity="0.85" />`;
+          airflowSVG = `<path d="M 250 150 Q 222 110 145 118" fill="none" stroke="#4F46E5" stroke-width="2.5" stroke-dasharray="5 3" />
+                        <path d="M 92 148 L 42 152" fill="none" stroke="#D97706" stroke-width="3" marker-end="url(#arrowHeadAmber)" />`;
+          lipBadge = 'Slightly Open Lips';
+          break;
+
+        case 'velar-stop':
+          // Back of tongue raised to touch soft palate
+          tonguePath = 'M 114 172 C 132 162, 165 142, 206 116 C 228 104, 246 135, 248 180 L 236 226 L 185 226 C 175 198, 145 184, 114 172 Z';
+          contactDot = `<circle cx="218" cy="116" r="6.5" fill="#EF4444" opacity="0.85" />`;
+          airflowSVG = `<path d="M 256 175 L 246 135" fill="none" stroke="#4F46E5" stroke-width="2.5" stroke-dasharray="4 3" />
+                        <path d="M 100 148 L 42 152" fill="none" stroke="#D97706" stroke-width="3" marker-end="url(#arrowHeadAmber)" />`;
+          lipBadge = 'Relaxed Open Lips';
+          break;
+
+        case 'alveolar-fricative':
+          // Tongue tip very close to alveolar ridge with narrow gap
+          tonguePath = 'M 108 142 C 118 128, 138 126, 174 134 C 212 142, 236 156, 244 184 L 236 226 L 185 226 C 175 198, 145 182, 114 176 Z';
+          contactDot = `<circle cx="117" cy="130" r="5" fill="#0D9488" opacity="0.7" />`;
+          airflowSVG = oralAir;
+          lipBadge = 'Slightly Spread Lips';
+          break;
+
+        case 'labiodental-fricative':
+          // Lower lip curled up to touch upper teeth!
+          lowerLipPath = 'M 80 148 C 90 144, 98 150, 96 164 C 88 172, 78 170, 76 158 Z';
+          contactDot = `<circle cx="94" cy="147" r="6" fill="#EF4444" opacity="0.85" />`;
+          airflowSVG = oralAir;
+          lipBadge = 'Top Teeth on Bottom Lip';
+          break;
+
+        case 'dental-fricative':
+          // Tongue tip protruding gently between upper and lower teeth!
+          tonguePath = 'M 86 150 C 98 142, 132 138, 178 140 C 216 142, 236 156, 244 184 L 236 226 L 185 226 C 175 198, 145 182, 110 166 Z';
+          contactDot = `<circle cx="93" cy="149" r="5.5" fill="#0D9488" opacity="0.8" />`;
+          airflowSVG = oralAir;
+          lipBadge = 'Tongue Tip Between Teeth';
+          break;
+
+        case 'postalveolar-fricative':
+          // Tongue arched behind alveolar ridge toward hard palate, lips slightly rounded
+          tonguePath = 'M 118 156 C 130 132, 152 122, 185 128 C 218 135, 238 154, 244 184 L 236 226 L 185 226 C 175 198, 145 182, 118 172 Z';
+          upperLipPath = 'M 68 128 C 78 128, 86 134, 86 143 C 76 146, 66 144, 64 137 Z';
+          lowerLipPath = 'M 66 160 C 76 156, 86 160, 88 170 C 80 177, 68 177, 66 168 Z';
+          contactDot = `<circle cx="148" cy="122" r="5.5" fill="#0D9488" opacity="0.7" />`;
+          airflowSVG = oralAir;
+          lipBadge = 'Slightly Rounded Lips';
+          break;
+
+        case 'affricate':
+          // Tongue tip touches ridge/palate then releases
+          tonguePath = 'M 112 138 C 122 120, 148 118, 184 128 C 216 138, 238 154, 244 184 L 236 226 L 185 226 C 175 198, 145 182, 114 176 Z';
+          contactDot = `<circle cx="132" cy="122" r="6" fill="#EF4444" opacity="0.85" />`;
+          airflowSVG = `<path d="M 250 150 Q 220 112 150 116" fill="none" stroke="#4F46E5" stroke-width="2.5" stroke-dasharray="4 3" />
+                        <path d="M 102 146 L 42 152" fill="none" stroke="#D97706" stroke-width="3" marker-end="url(#arrowHeadAmber)" />`;
+          lipBadge = 'Slightly Rounded (Stop + Puff)';
+          break;
+
+        case 'bilabial-nasal':
+          upperLipPath = 'M 74 134 C 84 134, 90 142, 90 151 C 82 152, 74 152, 72 145 Z';
+          lowerLipPath = 'M 72 152 C 82 151, 90 153, 90 163 C 84 170, 74 170, 72 162 Z';
+          contactDot = `<circle cx="81" cy="151" r="6" fill="#0284C7" opacity="0.85" />`;
+          airflowSVG = nasalAir;
+          lipBadge = 'Lips Closed • Air Through Nose';
+          break;
+
+        case 'alveolar-nasal':
+          tonguePath = 'M 105 136 C 110 120, 128 118, 168 128 C 208 138, 236 154, 244 184 L 236 226 L 185 226 C 175 198, 145 182, 114 176 Z';
+          contactDot = `<circle cx="115" cy="126" r="6" fill="#0284C7" opacity="0.85" />`;
+          airflowSVG = nasalAir;
+          lipBadge = 'Tongue on Ridge • Air Through Nose';
+          break;
+
+        case 'velar-nasal':
+          tonguePath = 'M 114 172 C 132 162, 165 142, 206 116 C 228 104, 246 135, 248 180 L 236 226 L 185 226 C 175 198, 145 184, 114 172 Z';
+          contactDot = `<circle cx="218" cy="116" r="6" fill="#0284C7" opacity="0.85" />`;
+          airflowSVG = nasalAir;
+          lipBadge = 'Back Raised • Air Through Nose';
+          break;
+
+        case 'alveolar-lateral':
+          tonguePath = 'M 105 136 C 110 122, 130 124, 174 136 C 212 146, 236 158, 244 184 L 236 226 L 185 226 C 175 198, 145 182, 114 176 Z';
+          contactDot = `<circle cx="115" cy="126" r="5.5" fill="#0D9488" opacity="0.8" />`;
+          airflowSVG = oralAir;
+          lipBadge = 'Air Flows Around Tongue Sides';
+          break;
+
+        case 'bilabial-approx':
+          upperLipPath = 'M 64 132 C 76 132, 86 138, 86 146 C 74 148, 64 146, 62 140 Z';
+          lowerLipPath = 'M 62 158 C 74 155, 86 158, 88 168 C 78 175, 66 175, 62 166 Z';
+          tonguePath = 'M 122 172 C 140 162, 175 136, 212 126 C 234 122, 244 148, 246 184 L 236 226 L 185 226 Z';
+          airflowSVG = oralAir;
+          lipBadge = 'Tightly Rounded Lips ("oo")';
+          break;
+
+        case 'postalveolar-approx':
+          // Tongue tip curled back, not touching roof
+          tonguePath = 'M 134 154 C 138 136, 152 132, 172 142 C 204 150, 236 158, 244 184 L 236 226 L 185 226 C 175 198, 145 182, 134 154 Z';
+          airflowSVG = oralAir;
+          lipBadge = 'Tongue Curled Back (No Touch)';
+          break;
+
+        case 'palatal-approx':
+          tonguePath = 'M 112 162 C 128 134, 156 122, 192 128 C 222 134, 238 154, 244 184 L 236 226 L 185 226 Z';
+          airflowSVG = oralAir;
+          lipBadge = 'Spread Lips (Quick /i:/ Glide)';
+          break;
+
+        // VOWELS
+        case 'vowel-high-front':
+          tonguePath = 'M 108 158 C 122 126, 154 118, 192 126 C 222 134, 238 154, 244 184 L 236 226 L 185 226 Z';
+          airflowSVG = oralAir;
+          lipBadge = 'Wide Smile (Long)';
+          break;
+
+        case 'vowel-mid-high-front':
+          tonguePath = 'M 110 164 C 126 138, 156 132, 192 138 C 222 144, 238 158, 244 184 L 236 226 L 185 226 Z';
+          airflowSVG = oralAir;
+          lipBadge = 'Relaxed Slight Smile (Short)';
+          break;
+
+        case 'vowel-mid-front':
+          tonguePath = 'M 112 168 C 128 148, 158 144, 194 148 C 222 152, 238 164, 244 184 L 236 226 L 185 226 Z';
+          airflowSVG = oralAir;
+          lipBadge = 'Medium Open Lips';
+          break;
+
+        case 'vowel-low-front':
+          tonguePath = 'M 114 176 C 132 164, 162 162, 198 164 C 224 166, 238 174, 244 190 L 236 226 L 185 226 Z';
+          airflowSVG = oralAir;
+          lipBadge = 'Wide Open Jaw';
+          break;
+
+        case 'vowel-mid-central':
+        case 'vowel-schwa':
+        case 'vowel-mid-central-long':
+          tonguePath = 'M 116 170 C 136 154, 168 148, 202 150 C 224 152, 238 164, 244 186 L 236 226 L 185 226 Z';
+          airflowSVG = oralAir;
+          lipBadge = type === 'vowel-schwa' ? 'Completely Relaxed (Weak)' : (type === 'vowel-mid-central-long' ? 'Relaxed Neutral (Long)' : 'Relaxed Center (Short)');
+          break;
+
+        case 'vowel-low-back':
+        case 'vowel-low-back-open':
+          tonguePath = 'M 124 180 C 148 172, 182 164, 214 162 C 232 162, 242 172, 246 190 L 236 226 L 185 226 Z';
+          airflowSVG = oralAir;
+          lipBadge = type === 'vowel-low-back' ? 'Open & Slightly Rounded' : 'Wide Open ("Ahh")';
+          break;
+
+        case 'vowel-mid-back-round':
+        case 'vowel-mid-high-back':
+        case 'vowel-high-back-round':
+          upperLipPath = 'M 66 130 C 76 130, 86 136, 86 145 C 74 147, 64 145, 62 138 Z';
+          lowerLipPath = 'M 64 159 C 74 156, 86 159, 88 169 C 78 176, 66 176, 64 167 Z';
+          tonguePath = type === 'vowel-high-back-round'
+            ? 'M 126 174 C 150 158, 182 126, 214 122 C 234 120, 244 146, 246 184 L 236 226 L 185 226 Z'
+            : 'M 124 174 C 148 162, 182 138, 214 134 C 234 134, 244 154, 246 184 L 236 226 L 185 226 Z';
+          airflowSVG = oralAir;
+          lipBadge = type === 'vowel-high-back-round' ? 'Tightly Rounded (Long)' : (type === 'vowel-mid-back-round' ? 'Firmly Rounded (Long)' : 'Loosely Rounded (Short)');
+          break;
+
+        // DIPHTHONGS (Show glide arrow inside mouth!)
+        case 'diphthong-ia':
+          airflowSVG = `<path d="M 142 130 Q 168 136 188 152" fill="none" stroke="#4F46E5" stroke-width="3.2" marker-end="url(#arrowHead)" />`;
+          lipBadge = 'Glide: Smile → Relaxed';
+          break;
+        case 'diphthong-ea':
+          airflowSVG = `<path d="M 146 150 Q 168 148 192 152" fill="none" stroke="#4F46E5" stroke-width="3.2" marker-end="url(#arrowHead)" />`;
+          lipBadge = 'Glide: Open → Relaxed';
+          break;
+        case 'diphthong-au':
+          airflowSVG = `<path d="M 155 166 Q 186 152 212 134" fill="none" stroke="#4F46E5" stroke-width="3.2" marker-end="url(#arrowHead)" />`;
+          lipBadge = 'Glide: Wide Open → Rounded';
+          break;
+        case 'diphthong-ou':
+          airflowSVG = `<path d="M 176 150 Q 198 140 215 130" fill="none" stroke="#4F46E5" stroke-width="3.2" marker-end="url(#arrowHead)" />`;
+          lipBadge = 'Glide: Relaxed → Rounded';
+          break;
+        case 'diphthong-ei':
+          airflowSVG = `<path d="M 150 154 Q 144 140 138 128" fill="none" stroke="#4F46E5" stroke-width="3.2" marker-end="url(#arrowHead)" />`;
+          lipBadge = 'Glide: Mid-Open → Smile';
+          break;
+        case 'diphthong-oi':
+          airflowSVG = `<path d="M 208 148 Q 174 134 140 128" fill="none" stroke="#4F46E5" stroke-width="3.2" marker-end="url(#arrowHead)" />`;
+          lipBadge = 'Glide: Rounded → Smile';
+          break;
+        case 'diphthong-ai':
+          airflowSVG = `<path d="M 164 168 Q 152 146 138 128" fill="none" stroke="#4F46E5" stroke-width="3.2" marker-end="url(#arrowHead)" />`;
+          lipBadge = 'Glide: Wide Open → Smile';
+          break;
+      }
+
+      const voiceIndicator = isVoiced
+        ? `<g>
+             <circle cx="246" cy="240" r="16" fill="#14B8A6" opacity="0.22" class="voice-pulse" />
+             <circle cx="246" cy="240" r="10" fill="#0D9488" />
+             <path d="M 240 240 Q 243 235 246 240 T 252 240" fill="none" stroke="#FFF" stroke-width="2" />
+             <text x="246" y="266" text-anchor="middle" font-size="10.5" font-weight="800" fill="#0F766E">VOICE ON</text>
+           </g>`
+        : `<g>
+             <circle cx="246" cy="240" r="11" fill="#FEF3C7" stroke="#D97706" stroke-width="2" />
+             <line x1="241" y1="235" x2="251" y2="245" stroke="#D97706" stroke-width="2" />
+             <text x="246" y="266" text-anchor="middle" font-size="10.5" font-weight="800" fill="#B45309">AIR ONLY</text>
+           </g>`;
+
+      return `
+        <div class="bg-cream rounded-2xl border border-stone-200 p-4 flex flex-col items-center">
+          <svg viewBox="0 0 320 280" class="w-full max-w-[300px] h-auto select-none" role="img" aria-label="Mouth production diagram for ${sound.ipa}">
+            <defs>
+              <marker id="arrowHead" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+                <polygon points="0 0, 7 3.5, 0 7" fill="#4F46E5" />
+              </marker>
+              <marker id="arrowHeadBlue" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+                <polygon points="0 0, 7 3.5, 0 7" fill="#0284C7" />
+              </marker>
+              <marker id="arrowHeadAmber" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+                <polygon points="0 0, 7 3.5, 0 7" fill="#D97706" />
+              </marker>
+            </defs>
+
+            <!-- Simplified Clean Head Silhouette -->
+            <path d="M 105 18 C 185 15, 275 35, 295 110 C 308 158, 300 215, 292 272 L 160 272 L 156 232 C 135 234, 112 232, 96 220 C 86 212, 86 198, 92 188 C 80 182, 76 170, 82 158 C 72 152, 72 140, 82 134 C 84 126, 86 120, 84 114 L 58 106 C 50 102, 52 92, 62 86 L 94 60 Z"
+                  fill="#FDE8D7" stroke="#CBD5E1" stroke-width="1.8" />
+
+            <!-- Nasal Cavity -->
+            <path d="M 88 112 C 118 88, 178 78, 232 94 C 254 100, 265 118, 268 144 L 250 146 C 244 124, 232 112, 212 108 C 170 102, 124 112, 98 122 Z"
+                  fill="#E0F2FE" stroke="#BAE6FD" stroke-width="1.5" />
+
+            <!-- Oral Cavity & Throat -->
+            <path d="M 88 150 C 106 138, 134 114, 186 112 C 222 110, 250 122, 258 152 C 266 182, 264 226, 258 272 L 222 272 C 226 230, 224 196, 218 176 C 204 166, 146 172, 98 164 Z"
+                  fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.6" />
+
+            <!-- Alveolar Ridge Marker -->
+            <path d="M 104 134 C 110 129, 116 126, 124 123" fill="none" stroke="#0D9488" stroke-width="4.5" stroke-linecap="round" opacity="0.65" />
+
+            <!-- Upper & Lower Teeth -->
+            <path d="M 94 136 L 102 136 L 100 148 L 93 147 Z" fill="#FFF" stroke="#64748B" stroke-width="1.5" />
+            <path d="M 95 170 L 103 169 L 101 157 L 95 158 Z" fill="#FFF" stroke="#64748B" stroke-width="1.5" />
+
+            <!-- Dynamic Lips -->
+            <path d="${upperLipPath}" fill="#FDA4AF" stroke="#E11D48" stroke-width="1.5" />
+            <path d="${lowerLipPath}" fill="#FDA4AF" stroke="#E11D48" stroke-width="1.5" />
+
+            <!-- Dynamic Tongue -->
+            <path d="${tonguePath}" fill="#FB7185" opacity="0.9" stroke="#BE123C" stroke-width="1.8" />
+
+            <!-- Contact Point Indicator -->
+            ${contactDot}
+
+            <!-- Airflow / Glide Arrows -->
+            ${airflowSVG}
+
+            <!-- Throat Voicing Indicator -->
+            ${voiceIndicator}
+          </svg>
+          <div class="mt-2 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-stone-200 text-xs font-bold text-slate-700 shadow-sm">
+            <span class="w-2 h-2 rounded-full ${isVoiced ? 'bg-teal-500' : 'bg-amber-500'}"></span>
+            ${lipBadge}
+          </div>
+        </div>
+      `;
+    }
+
+    /* =========================================================================
+       6. NAVIGATION & SECTION 1 RENDERERS
+       ========================================================================= */
+    function switchMainTab(tabId) {
+      document.querySelectorAll('.main-section').forEach(s => s.classList.add('hidden'));
+      document.getElementById(`section-${tabId}`).classList.remove('hidden');
+
+      document.querySelectorAll('.main-tab').forEach(btn => {
+        btn.className = 'main-tab flex-1 sm:flex-none px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap text-slate-600 hover:text-slate-900';
+      });
+      document.getElementById(`tab-${tabId}`).className =
+        'main-tab flex-1 sm:flex-none px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all whitespace-nowrap bg-white text-indigo-700 shadow-sm';
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function selectOrgan(organKey) {
+      const organ = ORGANS_DATA[organKey];
+      if (!organ) return;
+
+      // Update SVG active hotspot
+      document.querySelectorAll('.organ-hotspot').forEach(g => {
+        if (g.dataset.organ === organKey) g.classList.add('active');
+        else g.classList.remove('active');
+      });
+
+      // Update pills
+      const pillsContainer = document.getElementById('organ-pills');
+      pillsContainer.innerHTML = Object.entries(ORGANS_DATA).map(([key, o]) => `
+        <button onclick="selectOrgan('${key}')" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold transition ${
+          key === organKey
+            ? 'bg-indigo-600 text-white shadow-sm'
+            : 'bg-white text-slate-600 border border-stone-200 hover:bg-indigo-50 hover:text-indigo-700'
+        }">
+          ${o.num}. ${o.name.split(' ')[0]}
+        </button>
+      `).join('');
+
+      // Update detail panel
+      const panel = document.getElementById('organ-info-panel');
+      panel.innerHTML = `
+        <div class="space-y-4 animate-fade-in">
+          <div class="flex items-center gap-3">
+            <span class="w-9 h-9 rounded-xl bg-indigo-600 text-white font-extrabold flex items-center justify-center text-base shadow-sm">${organ.num}</span>
+            <h4 class="text-xl font-extrabold text-slate-900">${organ.name}</h4>
+          </div>
+          <p class="text-sm text-slate-700 leading-relaxed">${organ.role}</p>
+          <div class="bg-white rounded-xl p-3.5 border border-indigo-100">
+            <div class="text-xs font-bold uppercase tracking-wider text-indigo-600 mb-1">What Touches What?</div>
+            <p class="text-sm text-slate-600 leading-relaxed">${organ.howItWorks}</p>
+          </div>
+          <div class="bg-teal-50/80 rounded-xl p-3.5 border border-teal-100">
+            <div class="text-xs font-bold uppercase tracking-wider text-teal-700 mb-1">Try It Right Now!</div>
+            <p class="text-sm text-teal-900 font-medium">${organ.tryIt}</p>
+          </div>
+        </div>
+        <div class="mt-5 pt-4 border-t border-indigo-100">
+          <div class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Sounds That Use This Organ (Click to Explore):</div>
+          <div class="flex flex-wrap gap-1.5">
+            ${organ.sounds.map(ipa => `
+              <button onclick="jumpToSoundByIPA('${ipa}')" class="px-2.5 py-1 rounded-lg bg-white border border-indigo-200 text-indigo-700 font-mono text-xs font-bold hover:bg-indigo-600 hover:text-white transition shadow-sm">
+                ${ipa}
+              </button>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    function jumpToSoundByIPA(ipa) {
+      const idx = SOUNDS_DATA.findIndex(s => s.ipa === ipa);
+      if (idx !== -1) {
+        switchMainTab('explorer');
+        openSoundModal(idx);
+      }
+    }
+
+    function renderSpellingAccordion() {
+      const container = document.getElementById('spelling-accordion');
+      container.innerHTML = SPELLING_RULES.map((item, idx) => {
+        const badgeStyles = {
+          amber: 'bg-amber-50 text-amber-800 border-amber-200',
+          indigo: 'bg-indigo-50 text-indigo-800 border-indigo-200',
+          teal: 'bg-teal-50 text-teal-800 border-teal-200'
+        }[item.color];
+        return `
+          <div class="border border-stone-200 rounded-xl overflow-hidden bg-cream/40">
+            <button onclick="toggleAccordion(${idx})" class="w-full px-4 py-3.5 flex items-center justify-between text-left hover:bg-stone-50 transition">
+              <div class="flex items-center gap-2.5">
+                <span class="px-2 py-0.5 rounded-md text-[11px] font-bold border ${badgeStyles}">${item.badge}</span>
+                <span class="font-bold text-sm text-slate-900">${item.title}</span>
+              </div>
+              <svg id="acc-icon-${idx}" class="w-4 h-4 text-slate-400 transition-transform duration-200 ${idx < 2 ? 'rotate-180' : ''}" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div id="acc-body-${idx}" class="${idx < 2 ? '' : 'hidden'} px-4 pb-4 pt-1 border-t border-stone-100 bg-white space-y-2.5">
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">${item.rule}</p>
+              <div class="flex flex-wrap gap-1.5">
+                ${item.examples.map(w => `
+                  <button onclick="speakWord('${w.replace(/'/g, "\\'")}')" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-cream hover:bg-indigo-50 border border-stone-200 text-xs font-semibold text-slate-700 hover:text-indigo-700 transition">
+                    <span>🔊</span> ${w}
+                  </button>
+                `).join('')}
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function toggleAccordion(idx) {
+      const body = document.getElementById(`acc-body-${idx}`);
+      const icon = document.getElementById(`acc-icon-${idx}`);
+      body.classList.toggle('hidden');
+      icon.classList.toggle('rotate-180');
+    }
+
+    /* =========================================================================
+       7. SECTION 2: SOUND EXPLORER & MODAL
+       ========================================================================= */
+    const CATEGORIES = [
+      'All',
+      'Stops / Plosives',
+      'Fricatives',
+      'Affricates',
+      'Nasals & Liquids',
+      'Approximants',
+      'Short Vowels',
+      'Long Vowels',
+      'Diphthongs',
+      'Schwa & Linking'
+    ];
+
+    function renderCategoryFilters() {
+      const container = document.getElementById('category-filters');
+      container.innerHTML = CATEGORIES.map(cat => `
+        <button onclick="setCategory('${cat}')" class="px-3.5 py-1.5 rounded-full text-xs font-semibold transition ${
+          appState.currentCategory === cat
+            ? 'bg-indigo-600 text-white shadow-sm'
+            : 'bg-stone-100 text-slate-600 hover:bg-stone-200'
+        }">
+          ${cat}
+        </button>
+      `).join('');
+    }
+
+    function setCategory(cat) {
+      appState.currentCategory = cat;
+      renderCategoryFilters();
+      renderSoundGrid();
+    }
+
+    function renderSoundGrid() {
+      const query = (document.getElementById('sound-search')?.value || '').trim().toLowerCase();
+      const grid = document.getElementById('sound-grid');
+
+      const filtered = SOUNDS_DATA.map((s, idx) => ({ ...s, originalIndex: idx })).filter(s => {
+        const matchCat = appState.currentCategory === 'All' || s.category === appState.currentCategory;
+        const matchQuery = !query ||
+          s.ipa.toLowerCase().includes(query) ||
+          s.keyword.toLowerCase().includes(query) ||
+          `lesson ${s.lesson}`.includes(query) ||
+          s.examples.some(e => e.toLowerCase().includes(query));
+        return matchCat && matchQuery;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div class="col-span-full text-center py-12 text-slate-500 text-sm">No sounds matched "${query}". Try clearing your search!</div>`;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(s => {
+        const explored = appState.exploredSounds.has(s.id);
+        const isVowel = s.category.includes('Vowel') || s.category === 'Diphthongs' || s.id === 'schwa';
+        const pillText = isVowel ? (s.category === 'Long Vowels' ? 'Long' : s.category === 'Diphthongs' ? 'Glide' : 'Short') : (s.voiced ? 'Voiced' : 'Unvoiced');
+        const pillColor = isVowel
+          ? 'bg-indigo-50 text-indigo-700'
+          : (s.voiced ? 'bg-teal-50 text-teal-700' : 'bg-amber-50 text-amber-700');
+
+        return `
+          <button onclick="openSoundModal(${s.originalIndex})" class="group relative bg-white hover:bg-indigo-50/40 rounded-2xl border ${explored ? 'border-teal-300' : 'border-stone-200'} hover:border-indigo-400 p-4 text-left transition-all shadow-sm hover:shadow-md flex flex-col justify-between min-h-[132px]">
+            <div class="flex items-center justify-between w-full">
+              <span class="text-[11px] font-bold text-slate-400 uppercase">L${s.lesson}</span>
+              <span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${pillColor}">${pillText}</span>
+            </div>
+            <div class="my-2">
+              <div class="text-2xl sm:text-3xl font-mono font-extrabold text-slate-900 group-hover:text-indigo-700 transition">${s.ipa}</div>
+              <div class="text-sm font-semibold text-slate-600 mt-0.5">${s.keyword}</div>
+            </div>
+            <div class="flex items-center justify-between text-[11px] text-slate-400">
+              <span class="truncate pr-2">${s.category}</span>
+              ${explored ? '<span class="text-teal-600 font-bold" title="Explored">✓</span>' : '<span class="group-hover:translate-x-0.5 transition">→</span>'}
+            </div>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function openSoundModal(index) {
+      appState.currentSoundIndex = index;
+      const sound = SOUNDS_DATA[index];
+      markSoundExplored(sound.id);
+      renderSoundGrid();
+
+      document.getElementById('modal-ipa').textContent = sound.ipa;
+      document.getElementById('modal-title').textContent = sound.keyword;
+      document.getElementById('modal-subtitle').textContent = `Lesson ${sound.lesson} • ${sound.category} • ${sound.voiced ? 'Voiced (Vibration)' : 'Unvoiced (Just Air)'}`;
+
+      const body = document.getElementById('modal-body');
+      body.innerHTML = `
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+          <!-- Left: Dynamic SVG Diagram -->
+          <div class="md:col-span-5">
+            ${generateMouthSVG(sound)}
+          </div>
+
+          <!-- Right: Explanation & Audio -->
+          <div class="md:col-span-7 space-y-4">
+            <div class="bg-indigo-50/70 border border-indigo-100 rounded-2xl p-4">
+              <div class="text-xs font-extrabold uppercase tracking-wider text-indigo-700 mb-1">What Touches What?</div>
+              <p class="text-sm text-slate-700 leading-relaxed">${sound.whatTouches}</p>
+            </div>
+
+            <!-- Speed Toggle + Example Words -->
+            <div class="space-y-2.5">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-extrabold uppercase tracking-wider text-slate-500">Listen & Repeat Words</span>
+                <div class="flex items-center gap-1">
+                  <button onclick="setSpeechRate(1.0)" class="speed-btn-normal px-2.5 py-1 rounded-lg text-xs font-bold ${speechRate === 1.0 ? 'bg-indigo-600 text-white shadow-sm' : 'bg-stone-100 text-slate-600'}">Normal</button>
+                  <button onclick="setSpeechRate(0.65)" class="speed-btn-slow px-2.5 py-1 rounded-lg text-xs font-semibold ${speechRate < 1.0 ? 'bg-indigo-600 text-white shadow-sm' : 'bg-stone-100 text-slate-600'}">Slow 0.65x</button>
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                ${sound.examples.map(word => `
+                  <button onclick="speakWord('${word.replace(/'/g, "\\'")}')" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white hover:bg-indigo-50 border border-stone-200 hover:border-indigo-300 text-sm font-semibold text-slate-800 transition shadow-sm">
+                    <span class="text-indigo-600">🔊</span> ${word}
+                  </button>
+                `).join('')}
+              </div>
+            </div>
+
+            <!-- Minimal Pairs -->
+            ${sound.minimalPairs && sound.minimalPairs.length ? `
+              <div class="space-y-2">
+                <span class="text-xs font-extrabold uppercase tracking-wider text-slate-500">Minimal Pairs Contrast (Click to Compare)</span>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  ${sound.minimalPairs.map(pair => `
+                    <button onclick="speakPair('${pair[0].replace(/'/g, "\\'")}', '${pair[1].replace(/'/g, "\\'")}')" class="flex items-center justify-between px-3 py-2 rounded-xl bg-cream hover:bg-teal-50 border border-stone-200 hover:border-teal-300 text-xs sm:text-sm font-semibold text-slate-700 transition">
+                      <span>${pair[0]} <span class="text-slate-400 mx-1">vs</span> ${pair[1]}</span>
+                      <span class="text-teal-600 font-bold">▶</span>
+                    </button>
+                  `).join('')}
+                </div>
+              </div>
+            ` : ''}
+
+            <!-- Spelling Tip -->
+            <div class="bg-amber-50/70 border border-amber-200 rounded-xl p-3.5 text-xs sm:text-sm text-amber-900">
+              <strong class="text-amber-800">💡 Lesson ${sound.lesson} Tip:</strong> ${sound.spellingTip}
+            </div>
+          </div>
+        </div>
+      `;
+
+      const modal = document.getElementById('sound-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeSoundModal() {
+      const modal = document.getElementById('sound-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      if (hasSpeech) window.speechSynthesis.cancel();
+    }
+
+    function navigateSoundModal(dir) {
+      let next = appState.currentSoundIndex + dir;
+      if (next < 0) next = SOUNDS_DATA.length - 1;
+      if (next >= SOUNDS_DATA.length) next = 0;
+      openSoundModal(next);
+    }
+
+    // Close modal when clicking backdrop or Escape
+    document.getElementById('sound-modal').addEventListener('click', (e) => {
+      if (e.target.id === 'sound-modal') closeSoundModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeSoundModal();
+    });
+
+    /* =========================================================================
+       8. SECTION 3: PRACTICE ARENA (5 INTERACTIVE ACTIVITIES)
+       ========================================================================= */
+    function switchPracticeTab(tabId) {
+      document.querySelectorAll('.practice-panel').forEach(p => p.classList.add('hidden'));
+      document.getElementById(`practice-${tabId}`).classList.remove('hidden');
+
+      document.querySelectorAll('.practice-tab').forEach(btn => {
+        btn.className = 'practice-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition bg-stone-100 text-slate-700 hover:bg-stone-200';
+      });
+      document.getElementById(`ptab-${tabId}`).className =
+        'practice-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition bg-indigo-600 text-white shadow-sm';
+    }
+
+    /* ----- ACTIVITY 1: 15-QUESTION MULTIPLE CHOICE QUIZ (MCQs) ----- */
+    const MCQ_QUESTIONS = [
+      {
+        q: 'Which parts of your mouth press together to make /p/ and /b/?',
+        options: ['Top teeth and bottom lip', 'Both upper and lower lips', 'Tongue tip and alveolar ridge', 'Back of tongue and soft palate'],
+        answer: 1,
+        explanation: 'Both /p/ (pen) and /b/ (book) are made by pressing both lips together, then releasing air.'
+      },
+      {
+        q: 'When you put your fingers on your throat and say /z/ (zoo), what do you feel?',
+        options: ['Nothing, just air', 'A strong vibration (voiced)', 'Air coming through your nose', 'Your lips closing tightly'],
+        answer: 1,
+        explanation: '/z/ is a VOICED sound, so your vocal cords vibrate. /s/ (sun) is unvoiced (just air).'
+      },
+      {
+        q: 'Where does your tongue tip go to make the sounds /θ/ (three) and /ð/ (feather)?',
+        options: ['Curled far back', 'Touching the soft palate', 'Gently between your upper and lower teeth', 'Pressed flat on the bottom of your mouth'],
+        answer: 2,
+        explanation: 'For both "th" sounds (/θ/ and /ð/), place your tongue tip gently between your front teeth.'
+      },
+      {
+        q: 'What do the two dots ":" mean in vowel symbols like /i:/, /ɔ:/, and /u:/?',
+        options: ['The sound is unvoiced', 'The sound is silent', 'It is a l-o-n-g vowel sound', 'It is a nasal sound'],
+        answer: 2,
+        explanation: 'As shown in the Tip Box, ":" after a vowel symbol always means it is a l-o-n-g sound (e.g., sheep /i:/ vs ship /ɪ/).'
+      },
+      {
+        q: 'Which of these words has a SILENT "b"?',
+        options: ['rubber', 'table', 'lamb', 'cab'],
+        answer: 2,
+        explanation: 'In "-mb" words like lamb, climb, thumb, comb, and bomb, the letter "b" is silent.'
+      },
+      {
+        q: 'Which sound is made by touching your top front teeth to your bottom lip?',
+        options: ['/f/ and /v/', '/w/ and /r/', '/t/ and /d/', '/k/ and /g/'],
+        answer: 0,
+        explanation: '/f/ (fish) and /v/ (van) are made by touching the upper front teeth gently onto the lower lip.'
+      },
+      {
+        q: 'Which of these words does NOT contain the /p/ sound?',
+        options: ['pepper', 'plate', 'photo', 'laptop'],
+        answer: 2,
+        explanation: 'In "photo", "phone", and "elephant", the letters "ph" make the /f/ sound, not /p/!'
+      },
+      {
+        q: 'Where does air escape when you pronounce the nasal sounds /m/, /n/, and /ŋ/?',
+        options: ['Around the sides of the tongue', 'Through the nose', 'Between the front teeth', 'With an unvoiced puff'],
+        answer: 1,
+        explanation: '/m/ (mouth), /n/ (nose), and /ŋ/ (ring) are nasal sounds — your mouth is blocked so voiced air flows out through your nose.'
+      },
+      {
+        q: 'Which of these words has a SILENT "t"?',
+        options: ['hotel', 'whistle', 'hunter', 'party'],
+        answer: 1,
+        explanation: 'Words ending in -stle (whistle, castle, wrestle) and -sten (listen, fasten, soften) have a silent "t".'
+      },
+      {
+        q: 'What is special about the Schwa sound /ə/ (as in "banana" and "mother")?',
+        options: ['It is always long and loud', 'It is never stressed — always short and weak', 'It is only used at the start of words', 'It is unvoiced'],
+        answer: 1,
+        explanation: 'The schwa /ə/ is NEVER stressed. It is always short, relaxed, and weak.'
+      },
+      {
+        q: 'In the answer "Yes, I can.", how is the word "can" pronounced?',
+        options: ['Weak form /kən/', 'Strong form /kæn/', 'Silent "c"', 'With /ɑ:/'],
+        answer: 1,
+        explanation: 'In questions ("Can you sing?"), we use the weak form /kən/. At the end of a sentence ("Yes, I can."), we use the strong form /kæn/!'
+      },
+      {
+        q: 'Which letters make the /k/ sound in the word "chemistry"?',
+        options: ['c only', 'ch', 'st', 'tr'],
+        answer: 1,
+        explanation: 'In Lesson 4, "ch" is pronounced /k/ in words like chemistry, mechanic, school, and ache.'
+      },
+      {
+        q: 'Which parts touch to produce /t/ (tin) and /d/ (door)?',
+        options: ['Back of tongue and soft palate', 'Tongue tip and alveolar ridge', 'Both lips', 'Top teeth and lower lip'],
+        answer: 1,
+        explanation: 'Your tongue tip presses firmly against the alveolar ridge (the bump behind your upper teeth) for /t/ and /d/.'
+      },
+      {
+        q: 'In which word is the "th" sound VOICED (/ð/)?',
+        options: ['three', 'tooth', 'mother', 'think'],
+        answer: 2,
+        explanation: '"mother", "father", "brother", and "feather" (and grammar words like "this", "the") use voiced /ð/.'
+      },
+      {
+        q: 'How is "linking /s/" used in the phrase "this seat"?',
+        options: ['Skip both s sounds', 'Stop completely between the two words', 'Connect the two /s/ sounds smoothly into one continuous /s/', 'Change /s/ to /ʃ/'],
+        answer: 2,
+        explanation: 'In Lesson 20, when a word ends in /s/ and the next begins with /s/, we link them smoothly: "this_seat".'
+      }
+    ];
+
+    const mcqState = { current: 0, score: 0, answered: false };
+
+    function renderMCQ() {
+      const container = document.getElementById('practice-mcq');
+      if (mcqState.current >= MCQ_QUESTIONS.length) {
+        const pct = Math.round((mcqState.score / MCQ_QUESTIONS.length) * 100);
+        container.innerHTML = `
+          <div class="text-center py-6 space-y-4 animate-fade-in">
+            <div class="w-16 h-16 mx-auto rounded-2xl bg-indigo-100 text-indigo-700 flex items-center justify-center text-3xl">🎉</div>
+            <h3 class="text-2xl font-extrabold text-slate-900">Quiz Complete!</h3>
+            <p class="text-slate-600">You scored <strong class="text-indigo-700 text-xl">${mcqState.score} / ${MCQ_QUESTIONS.length}</strong> (${pct}%)</p>
+            <p class="text-sm text-slate-500 max-w-md mx-auto">
+              ${pct >= 80 ? 'Amazing job! You really understand how English sounds are produced.' : 'Great practice! Review the Sound Explorer diagrams and try again to beat your score.'}
+            </p>
+            <button onclick="resetMCQ()" class="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-md transition">
+              Try Quiz Again
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      const item = MCQ_QUESTIONS[mcqState.current];
+      const progressPct = Math.round((mcqState.current / MCQ_QUESTIONS.length) * 100);
+
+      container.innerHTML = `
+        <div class="space-y-5 animate-fade-in">
+          <div class="flex items-center justify-between text-xs font-bold text-slate-500">
+            <span>Question ${mcqState.current + 1} of ${MCQ_QUESTIONS.length}</span>
+            <span class="text-indigo-700">Score: ${mcqState.score}</span>
+          </div>
+          <div class="w-full h-2 bg-stone-100 rounded-full overflow-hidden">
+            <div class="h-full bg-indigo-600 rounded-full transition-all duration-300" style="width: ${progressPct}%"></div>
+          </div>
+
+          <h3 class="text-lg sm:text-xl font-bold text-slate-900 leading-snug pt-1">${item.q}</h3>
+
+          <div class="grid grid-cols-1 gap-3" id="mcq-options">
+            ${item.options.map((opt, idx) => `
+              <button onclick="answerMCQ(${idx})" id="mcq-opt-${idx}" class="w-full text-left px-4 py-3.5 rounded-xl border border-stone-200 bg-cream/60 hover:bg-indigo-50 hover:border-indigo-300 text-sm font-semibold text-slate-800 transition flex items-center gap-3">
+                <span class="w-7 h-7 rounded-lg bg-white border border-stone-200 flex items-center justify-center text-xs font-bold text-slate-500 shrink-0">${String.fromCharCode(65 + idx)}</span>
+                <span>${opt}</span>
+              </button>
+            `).join('')}
+          </div>
+
+          <div id="mcq-feedback" class="hidden rounded-xl p-4 text-sm"></div>
+
+          <div class="flex justify-end">
+            <button id="mcq-next-btn" onclick="nextMCQ()" class="hidden px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-sm transition">
+              ${mcqState.current === MCQ_QUESTIONS.length - 1 ? 'See Results →' : 'Next Question →'}
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    function answerMCQ(choiceIdx) {
+      if (mcqState.answered) return;
+      mcqState.answered = true;
+      const item = MCQ_QUESTIONS[mcqState.current];
+      const isCorrect = choiceIdx === item.answer;
+
+      if (isCorrect) {
+        mcqState.score++;
+        addStars(1);
+      }
+
+      item.options.forEach((_, idx) => {
+        const btn = document.getElementById(`mcq-opt-${idx}`);
+        btn.disabled = true;
+        if (idx === item.answer) {
+          btn.className = 'w-full text-left px-4 py-3.5 rounded-xl border-2 border-teal-500 bg-teal-50 text-sm font-bold text-teal-900 flex items-center gap-3';
+        } else if (idx === choiceIdx && !isCorrect) {
+          btn.className = 'w-full text-left px-4 py-3.5 rounded-xl border-2 border-rose-400 bg-rose-50 text-sm font-bold text-rose-900 flex items-center gap-3';
+        } else {
+          btn.className = 'w-full text-left px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 text-sm font-medium text-slate-400 flex items-center gap-3 opacity-70';
+        }
+      });
+
+      const fb = document.getElementById('mcq-feedback');
+      fb.classList.remove('hidden');
+      fb.className = isCorrect
+        ? 'rounded-xl p-4 text-sm bg-teal-50 border border-teal-200 text-teal-900 animate-fade-in'
+        : 'rounded-xl p-4 text-sm bg-rose-50 border border-rose-200 text-rose-900 animate-fade-in';
+      fb.innerHTML = `<strong>${isCorrect ? '✓ Correct!' : '✕ Not quite!'}</strong> ${item.explanation}`;
+
+      document.getElementById('mcq-next-btn').classList.remove('hidden');
+    }
+
+    function nextMCQ() {
+      mcqState.current++;
+      mcqState.answered = false;
+      renderMCQ();
+    }
+
+    function resetMCQ() {
+      mcqState.current = 0;
+      mcqState.score = 0;
+      mcqState.answered = false;
+      renderMCQ();
+    }
+
+    /* ----- ACTIVITY 2: INTERACTIVE MATCHING GAME (3 ROUNDS) ----- */
+    const MATCHING_ROUNDS = [
+      {
+        title: 'Round 1: IPA Symbol ↔ Example Word',
+        pairs: [
+          { id: 1, left: '/θ/', right: 'three' },
+          { id: 2, left: '/ʃ/', right: 'shoe' },
+          { id: 3, left: '/ŋ/', right: 'ring' },
+          { id: 4, left: '/dʒ/', right: 'jam' },
+          { id: 5, left: '/ə/', right: 'banana' },
+          { id: 6, left: '/tʃ/', right: 'chair' }
+        ]
+      },
+      {
+        title: 'Round 2: Sound ↔ "What Touches What?"',
+        pairs: [
+          { id: 1, left: '/p/ & /b/', right: 'Both lips press together' },
+          { id: 2, left: '/f/ & /v/', right: 'Top teeth touch bottom lip' },
+          { id: 3, left: '/θ/ & /ð/', right: 'Tongue tip between teeth' },
+          { id: 4, left: '/t/ & /d/', right: 'Tongue tip touches alveolar ridge' },
+          { id: 5, left: '/k/ & /g/', right: 'Back of tongue touches soft palate' },
+          { id: 6, left: '/m/', right: 'Lips closed, air through nose' }
+        ]
+      },
+      {
+        title: 'Round 3: Tricky Spelling ↔ Sound',
+        pairs: [
+          { id: 1, left: '"ph" in phone', right: '/f/ sound' },
+          { id: 2, left: '"ch" in chemistry', right: '/k/ sound' },
+          { id: 3, left: '"tion" in nation', right: '/ʃ/ sound' },
+          { id: 4, left: '"sion" in decision', right: '/ʒ/ sound' },
+          { id: 5, left: '"kn" in knife', right: 'Silent K' },
+          { id: 6, left: '"-mb" in lamb', right: 'Silent B' }
+        ]
+      }
+    ];
+
+    const matchState = {
+      roundIdx: 0,
+      selectedLeft: null,
+      matchedIds: new Set(),
+      rightOrder: [],
+      mistakes: 0
+    };
+
+    function initMatchingRound(roundIdx) {
+      matchState.roundIdx = roundIdx;
+      matchState.selectedLeft = null;
+      matchState.matchedIds = new Set();
+      matchState.mistakes = 0;
+      const pairs = MATCHING_ROUNDS[roundIdx].pairs;
+      matchState.rightOrder = [...pairs].sort(() => Math.random() - 0.5);
+      renderMatching();
+    }
+
+    function renderMatching() {
+      const container = document.getElementById('practice-matching');
+      const round = MATCHING_ROUNDS[matchState.roundIdx];
+      const allDone = matchState.matchedIds.size === round.pairs.length;
+
+      container.innerHTML = `
+        <div class="space-y-5">
+          <!-- Round Selector -->
+          <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-stone-100">
+            <div class="flex flex-wrap gap-2">
+              ${MATCHING_ROUNDS.map((r, i) => `
+                <button onclick="initMatchingRound(${i})" class="px-3 py-1.5 rounded-lg text-xs font-bold transition ${
+                  i === matchState.roundIdx ? 'bg-indigo-600 text-white' : 'bg-stone-100 text-slate-600 hover:bg-stone-200'
+                }">Round ${i + 1}</button>
+              `).join('')}
+            </div>
+            <div class="text-xs font-bold text-slate-500">Matched: <span class="text-teal-700">${matchState.matchedIds.size}/${round.pairs.length}</span></div>
+          </div>
+
+          <div class="text-center">
+            <h3 class="text-lg font-extrabold text-slate-900">${round.title}</h3>
+            <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Tap an item on the left, then tap its matching partner on the right.</p>
+          </div>
+
+          ${allDone ? `
+            <div class="bg-teal-50 border border-teal-200 rounded-2xl p-6 text-center space-y-3 animate-fade-in">
+              <div class="text-3xl">🌟</div>
+              <h4 class="text-xl font-extrabold text-teal-900">Round Complete!</h4>
+              <p class="text-sm text-teal-800">You matched all ${round.pairs.length} pairs (${matchState.mistakes} mistakes).</p>
+              <div class="flex justify-center gap-2 pt-1">
+                <button onclick="initMatchingRound(${matchState.roundIdx})" class="px-4 py-2 rounded-xl bg-white border border-teal-300 text-teal-800 text-xs font-bold hover:bg-teal-100">Replay Round</button>
+                ${matchState.roundIdx < MATCHING_ROUNDS.length - 1 ? `
+                  <button onclick="initMatchingRound(${matchState.roundIdx + 1})" class="px-4 py-2 rounded-xl bg-teal-600 text-white text-xs font-bold hover:bg-teal-700">Next Round →</button>
+                ` : ''}
+              </div>
+            </div>
+          ` : `
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <!-- Left Column -->
+              <div class="space-y-2.5">
+                ${round.pairs.map(p => {
+                  const matched = matchState.matchedIds.has(p.id);
+                  const selected = matchState.selectedLeft === p.id;
+                  return `
+                    <button onclick="selectMatchLeft(${p.id})" ${matched ? 'disabled' : ''} class="w-full px-4 py-3.5 rounded-xl border-2 text-sm font-bold transition text-left flex items-center justify-between ${
+                      matched
+                        ? 'border-teal-200 bg-teal-50 text-teal-700 opacity-65'
+                        : selected
+                          ? 'border-indigo-600 bg-indigo-50 text-indigo-900 shadow-sm'
+                          : 'border-stone-200 bg-cream/60 hover:border-indigo-300 text-slate-800'
+                    }">
+                      <span class="font-mono sm:font-sans">${p.left}</span>
+                      ${matched ? '<span>✓</span>' : (selected ? '<span class="text-xs text-indigo-600">Selected</span>' : '')}
+                    </button>
+                  `;
+                }).join('')}
+              </div>
+
+              <!-- Right Column -->
+              <div class="space-y-2.5">
+                ${matchState.rightOrder.map(p => {
+                  const matched = matchState.matchedIds.has(p.id);
+                  return `
+                    <button onclick="selectMatchRight(${p.id})" ${matched ? 'disabled' : ''} class="w-full px-4 py-3.5 rounded-xl border-2 text-sm font-semibold transition text-left flex items-center justify-between ${
+                      matched
+                        ? 'border-teal-200 bg-teal-50 text-teal-700 opacity-65'
+                        : 'border-stone-200 bg-white hover:border-indigo-400 hover:bg-indigo-50/40 text-slate-700'
+                    }">
+                      <span>${p.right}</span>
+                      ${matched ? '<span>✓</span>' : ''}
+                    </button>
+                  `;
+                }).join('')}
+              </div>
+            </div>
+          `}
+        </div>
+      `;
+    }
+
+    function selectMatchLeft(id) {
+      if (matchState.matchedIds.has(id)) return;
+      matchState.selectedLeft = id;
+      renderMatching();
+    }
+
+    function selectMatchRight(id) {
+      if (matchState.matchedIds.has(id)) return;
+      if (matchState.selectedLeft === null) {
+        showToast('First tap an item on the left column!', 'amber');
+        return;
+      }
+      if (matchState.selectedLeft === id) {
+        matchState.matchedIds.add(id);
+        matchState.selectedLeft = null;
+        addStars(1);
+        showToast('Great match! +1 ★', 'teal');
+      } else {
+        matchState.mistakes++;
+        showToast('Not a match — try again!', 'rose');
+      }
+      renderMatching();
+    }
+
+    /* ----- ACTIVITY 3: VOICED VS. UNVOICED SORTER ----- */
+    const VOICING_CARDS = [
+      { ipa: '/b/', word: 'book', voiced: true },
+      { ipa: '/p/', word: 'pen', voiced: false },
+      { ipa: '/z/', word: 'zoo', voiced: true },
+      { ipa: '/s/', word: 'sun', voiced: false },
+      { ipa: '/v/', word: 'van', voiced: true },
+      { ipa: '/f/', word: 'fish', voiced: false },
+      { ipa: '/ð/', word: 'feather', voiced: true },
+      { ipa: '/θ/', word: 'three', voiced: false },
+      { ipa: '/g/', word: 'girl', voiced: true },
+      { ipa: '/k/', word: 'key', voiced: false },
+      { ipa: '/dʒ/', word: 'jam', voiced: true },
+      { ipa: '/tʃ/', word: 'chair', voiced: false }
+    ];
+
+    const voicingState = {
+      deck: [],
+      index: 0,
+      score: 0,
+      streak: 0,
+      lastFeedback: null
+    };
+
+    function initVoicingGame() {
+      voicingState.deck = [...VOICING_CARDS].sort(() => Math.random() - 0.5);
+      voicingState.index = 0;
+      voicingState.score = 0;
+      voicingState.streak = 0;
+      voicingState.lastFeedback = null;
+      renderVoicingGame();
+    }
+
+    function renderVoicingGame() {
+      const container = document.getElementById('practice-voicing');
+      if (voicingState.index >= voicingState.deck.length) {
+        container.innerHTML = `
+          <div class="text-center py-6 space-y-4 animate-fade-in">
+            <div class="text-4xl">🎙️</div>
+            <h3 class="text-2xl font-extrabold text-slate-900">Sorting Complete!</h3>
+            <p class="text-slate-600">You sorted <strong class="text-teal-700 text-xl">${voicingState.score} / ${voicingState.deck.length}</strong> sounds correctly.</p>
+            <button onclick="initVoicingGame()" class="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-md transition">
+              Play Again
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      const card = voicingState.deck[voicingState.index];
+      container.innerHTML = `
+        <div class="space-y-6 text-center animate-fade-in">
+          <div class="flex items-center justify-between text-xs font-bold text-slate-500">
+            <span>Card ${voicingState.index + 1} of ${voicingState.deck.length}</span>
+            <span class="px-2.5 py-1 rounded-full bg-amber-50 text-amber-700 border border-amber-200">🔥 Streak: ${voicingState.streak}</span>
+          </div>
+
+          <p class="text-xs sm:text-sm text-slate-500">Put your fingers on your throat, say the sound out loud, and sort it!</p>
+
+          <div class="bg-cream border-2 border-indigo-100 rounded-3xl p-7 max-w-sm mx-auto shadow-sm space-y-3">
+            <div class="text-5xl font-mono font-extrabold text-indigo-700">${card.ipa}</div>
+            <div class="text-xl font-bold text-slate-800">${card.word}</div>
+            <button onclick="speakWord('${card.word}')" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white border border-indigo-200 text-indigo-700 text-xs font-bold hover:bg-indigo-50 shadow-sm transition">
+              🔊 Listen to "${card.word}"
+            </button>
+          </div>
+
+          ${voicingState.lastFeedback ? `
+            <div class="text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-xl ${voicingState.lastFeedback.ok ? 'bg-teal-50 text-teal-800 border border-teal-200' : 'bg-rose-50 text-rose-800 border border-rose-200'}">
+              ${voicingState.lastFeedback.msg}
+            </div>
+          ` : ''}
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+            <button onclick="sortVoicing(true)" class="p-4 rounded-2xl bg-teal-600 hover:bg-teal-700 text-white font-bold shadow-md transition flex flex-col items-center">
+              <span class="text-base">Voiced</span>
+              <span class="text-xs text-teal-100 font-medium mt-0.5">Throat Vibrates (Voice ON)</span>
+            </button>
+            <button onclick="sortVoicing(false)" class="p-4 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-bold shadow-md transition flex flex-col items-center">
+              <span class="text-base">Unvoiced</span>
+              <span class="text-xs text-amber-50 font-medium mt-0.5">Just Air (No Vibration)</span>
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    function sortVoicing(choiceVoiced) {
+      const card = voicingState.deck[voicingState.index];
+      const ok = choiceVoiced === card.voiced;
+      if (ok) {
+        voicingState.score++;
+        voicingState.streak++;
+        addStars(1);
+        voicingState.lastFeedback = {
+          ok: true,
+          msg: `✓ Right! ${card.ipa} (${card.word}) is ${card.voiced ? 'VOICED (throat vibrates)' : 'UNVOICED (just air)'}.`
+        };
+      } else {
+        voicingState.streak = 0;
+        voicingState.lastFeedback = {
+          ok: false,
+          msg: `✕ Actually, ${card.ipa} (${card.word}) is ${card.voiced ? 'VOICED (throat vibrates)' : 'UNVOICED (just air)'}.`
+        };
+      }
+      voicingState.index++;
+      renderVoicingGame();
+    }
+
+    /* ----- ACTIVITY 4: SILENT LETTER DETECTIVE ----- */
+    const SILENT_ROUNDS = [
+      {
+        title: 'Case 1: Find all words with a SILENT /b/',
+        hint: 'Look for "-mb" words from Lesson 1!',
+        words: [
+          { word: 'lamb', silent: true },
+          { word: 'bad', silent: false },
+          { word: 'comb', silent: true },
+          { word: 'cab', silent: false },
+          { word: 'plumber', silent: true },
+          { word: 'table', silent: false },
+          { word: 'bomb', silent: true },
+          { word: 'rubber', silent: false },
+          { word: 'tomb', silent: true }
+        ]
+      },
+      {
+        title: 'Case 2: Find all words with a SILENT /t/',
+        hint: 'Look for "-sten", "-stle", and "often" from Lesson 2!',
+        words: [
+          { word: 'listen', silent: true },
+          { word: 'hotel', silent: false },
+          { word: 'whistle', silent: true },
+          { word: 'paint', silent: false },
+          { word: 'castle', silent: true },
+          { word: 'party', silent: false },
+          { word: 'often', silent: true },
+          { word: 'hunter', silent: false },
+          { word: 'soften', silent: true }
+        ]
+      },
+      {
+        title: 'Case 3: Find all words with a SILENT /l/',
+        hint: 'Check the Silent L list from Lesson 8!',
+        words: [
+          { word: 'talk', silent: true },
+          { word: 'yellow', silent: false },
+          { word: 'walk', silent: true },
+          { word: 'melon', silent: false },
+          { word: 'half', silent: true },
+          { word: 'bottle', silent: false },
+          { word: 'could', silent: true },
+          { word: 'lovely', silent: false },
+          { word: 'calm', silent: true }
+        ]
+      }
+    ];
+
+    const silentState = {
+      roundIdx: 0,
+      selected: new Set(),
+      checked: false
+    };
+
+    function initSilentRound(idx) {
+      silentState.roundIdx = idx;
+      silentState.selected = new Set();
+      silentState.checked = false;
+      renderSilentDetective();
+    }
+
+    function renderSilentDetective() {
+      const container = document.getElementById('practice-silent');
+      const round = SILENT_ROUNDS[silentState.roundIdx];
+
+      container.innerHTML = `
+        <div class="space-y-5 animate-fade-in">
+          <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-stone-100">
+            <div class="flex gap-2">
+              ${SILENT_ROUNDS.map((_, i) => `
+                <button onclick="initSilentRound(${i})" class="px-3 py-1.5 rounded-lg text-xs font-bold transition ${
+                  i === silentState.roundIdx ? 'bg-indigo-600 text-white' : 'bg-stone-100 text-slate-600 hover:bg-stone-200'
+                }">Case ${i + 1}</button>
+              `).join('')}
+            </div>
+            <span class="text-xs font-semibold text-amber-700 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">🔍 ${round.hint}</span>
+          </div>
+
+          <div class="text-center">
+            <h3 class="text-lg sm:text-xl font-extrabold text-slate-900">${round.title}</h3>
+            <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Tap all 5 words that hide a silent letter, then click "Check My Clues".</p>
+          </div>
+
+          <div class="grid grid-cols-3 gap-3">
+            ${round.words.map((item, i) => {
+              const sel = silentState.selected.has(i);
+              let cls = 'border-stone-200 bg-cream/60 hover:border-indigo-300 text-slate-800';
+              let badge = '';
+
+              if (!silentState.checked && sel) {
+                cls = 'border-indigo-600 bg-indigo-50 text-indigo-900 shadow-sm';
+              } else if (silentState.checked) {
+                if (item.silent && sel) {
+                  cls = 'border-teal-500 bg-teal-50 text-teal-900';
+                  badge = '<span class="text-xs text-teal-700 font-bold">✓ Found!</span>';
+                } else if (item.silent && !sel) {
+                  cls = 'border-amber-400 bg-amber-50 text-amber-900';
+                  badge = '<span class="text-xs text-amber-700 font-bold">Missed</span>';
+                } else if (!item.silent && sel) {
+                  cls = 'border-rose-400 bg-rose-50 text-rose-900';
+                  badge = '<span class="text-xs text-rose-700 font-bold">Not silent</span>';
+                } else {
+                  cls = 'border-stone-100 bg-stone-50 text-slate-400';
+                }
+              }
+
+              return `
+                <button onclick="toggleSilentWord(${i})" class="p-3.5 sm:p-4 rounded-xl border-2 font-bold text-sm sm:text-base transition flex flex-col items-center justify-center gap-1 ${cls}">
+                  <span>${item.word}</span>
+                  ${badge}
+                </button>
+              `;
+            }).join('')}
+          </div>
+
+          <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+            ${!silentState.checked ? `
+              <button onclick="checkSilentRound()" class="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-md transition">
+                Check My Clues
+              </button>
+            ` : `
+              <button onclick="initSilentRound(${silentState.roundIdx})" class="px-5 py-2.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-slate-700 font-bold text-sm transition">
+                Reset Case
+              </button>
+              ${silentState.roundIdx < SILENT_ROUNDS.length - 1 ? `
+                <button onclick="initSilentRound(${silentState.roundIdx + 1})" class="px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-sm shadow-sm transition">
+                  Next Case →
+                </button>
+              ` : ''}
+            `}
+          </div>
+        </div>
+      `;
+    }
+
+    function toggleSilentWord(idx) {
+      if (silentState.checked) {
+        speakWord(SILENT_ROUNDS[silentState.roundIdx].words[idx].word);
+        return;
+      }
+      if (silentState.selected.has(idx)) silentState.selected.delete(idx);
+      else silentState.selected.add(idx);
+      renderSilentDetective();
+    }
+
+    function checkSilentRound() {
+      silentState.checked = true;
+      const round = SILENT_ROUNDS[silentState.roundIdx];
+      let hits = 0, wrong = 0;
+      round.words.forEach((w, i) => {
+        if (w.silent && silentState.selected.has(i)) hits++;
+        if (!w.silent && silentState.selected.has(i)) wrong++;
+      });
+      if (hits === 5 && wrong === 0) {
+        addStars(3);
+        showToast('Perfect detective work! +3 ★', 'teal');
+      } else {
+        showToast(`You found ${hits}/5 silent words (${wrong} wrong). Tap any word to hear it!`, 'amber');
+      }
+      renderSilentDetective();
+    }
+
+    /* ----- ACTIVITY 5: MINIMAL PAIRS LISTENING LAB ----- */
+    const LISTENING_PAIRS = [
+      { a: 'sheep', b: 'ship', contrast: '/i:/ (long smile) vs /ɪ/ (short relaxed)' },
+      { a: 'pin', b: 'bin', contrast: '/p/ (unvoiced air) vs /b/ (voiced)' },
+      { a: 'light', b: 'right', contrast: '/l/ (tongue touches ridge) vs /r/ (tongue curled back)' },
+      { a: 'cap', b: 'cup', contrast: '/æ/ (jaw wide open) vs /ʌ/ (relaxed center)' },
+      { a: 'mouse', b: 'mouth', contrast: '/s/ (tongue near ridge) vs /θ/ (tongue between teeth)' },
+      { a: 'cheap', b: 'sheep', contrast: '/tʃ/ (stop + puff) vs /ʃ/ (smooth continuous air)' },
+      { a: 'pull', b: 'pool', contrast: '/ʊ/ (short loose) vs /u:/ (long tightly rounded)' },
+      { a: 'vet', b: 'wet', contrast: '/v/ (top teeth on lip) vs /w/ (rounded lips)' },
+      { a: 'coat', b: 'goat', contrast: '/k/ (unvoiced) vs /g/ (voiced)' },
+      { a: 'pear', b: 'bear', contrast: '/p/ (unvoiced) vs /b/ (voiced)' }
+    ];
+
+    const listenState = {
+      index: 0,
+      target: 'a', // 'a' or 'b'
+      score: 0,
+      answered: false
+    };
+
+    function initListeningLab() {
+      listenState.index = 0;
+      listenState.score = 0;
+      listenState.answered = false;
+      pickListeningTarget();
+      renderListeningLab();
+    }
+
+    function pickListeningTarget() {
+      listenState.target = Math.random() < 0.5 ? 'a' : 'b';
+    }
+
+    function playCurrentListeningWord(slow = false) {
+      const pair = LISTENING_PAIRS[listenState.index];
+      const word = pair[listenState.target];
+      speakWord(word, slow ? 0.65 : 1.0);
+    }
+
+    function renderListeningLab() {
+      const container = document.getElementById('practice-listening');
+      if (listenState.index >= LISTENING_PAIRS.length) {
+        container.innerHTML = `
+          <div class="text-center py-6 space-y-4 animate-fade-in">
+            <div class="text-4xl">🎧</div>
+            <h3 class="text-2xl font-extrabold text-slate-900">Listening Lab Complete!</h3>
+            <p class="text-slate-600">You identified <strong class="text-indigo-700 text-xl">${listenState.score} / ${LISTENING_PAIRS.length}</strong> minimal pairs correctly.</p>
+            <button onclick="initListeningLab()" class="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-md transition">
+              Practice Again
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      const pair = LISTENING_PAIRS[listenState.index];
+      container.innerHTML = `
+        <div class="space-y-6 text-center animate-fade-in">
+          <div class="flex items-center justify-between text-xs font-bold text-slate-500">
+            <span>Pair ${listenState.index + 1} of ${LISTENING_PAIRS.length}</span>
+            <span class="text-indigo-700">Score: ${listenState.score}</span>
+          </div>
+
+          <div>
+            <h3 class="text-lg sm:text-xl font-extrabold text-slate-900">Which Word Do You Hear?</h3>
+            <p class="text-xs sm:text-sm text-slate-500 mt-1">Click Play to listen, then choose the matching word below.</p>
+          </div>
+
+          <!-- Audio Controls -->
+          <div class="flex items-center justify-center gap-3">
+            <button onclick="playCurrentListeningWord(false)" class="px-6 py-3.5 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-md transition flex items-center gap-2">
+              <span>🔊</span> Play Word
+            </button>
+            <button onclick="playCurrentListeningWord(true)" class="px-4 py-3.5 rounded-2xl bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 font-bold text-sm transition">
+              🐢 Slow
+            </button>
+          </div>
+
+          <!-- Two Word Choices -->
+          <div class="grid grid-cols-2 gap-4 max-w-md mx-auto">
+            <button onclick="answerListening('a')" id="listen-btn-a" class="p-5 rounded-2xl border-2 border-stone-200 bg-cream/70 hover:border-indigo-400 hover:bg-indigo-50 text-xl font-extrabold text-slate-800 transition">
+              ${pair.a}
+            </button>
+            <button onclick="answerListening('b')" id="listen-btn-b" class="p-5 rounded-2xl border-2 border-stone-200 bg-cream/70 hover:border-indigo-400 hover:bg-indigo-50 text-xl font-extrabold text-slate-800 transition">
+              ${pair.b}
+            </button>
+          </div>
+
+          <div id="listen-feedback" class="hidden rounded-xl p-4 text-sm text-left"></div>
+
+          <div class="flex justify-center">
+            <button id="listen-next-btn" onclick="nextListeningPair()" class="hidden px-6 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-sm transition">
+              Next Pair →
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    function answerListening(choice) {
+      if (listenState.answered) return;
+      listenState.answered = true;
+      const pair = LISTENING_PAIRS[listenState.index];
+      const ok = choice === listenState.target;
+      const correctWord = pair[listenState.target];
+
+      if (ok) {
+        listenState.score++;
+        addStars(1);
+      }
+
+      ['a', 'b'].forEach(k => {
+        const btn = document.getElementById(`listen-btn-${k}`);
+        btn.disabled = true;
+        if (k === listenState.target) {
+          btn.className = 'p-5 rounded-2xl border-2 border-teal-500 bg-teal-50 text-xl font-extrabold text-teal-900';
+        } else if (k === choice && !ok) {
+          btn.className = 'p-5 rounded-2xl border-2 border-rose-400 bg-rose-50 text-xl font-extrabold text-rose-900';
+        } else {
+          btn.className = 'p-5 rounded-2xl border-2 border-stone-200 bg-stone-50 text-xl font-bold text-slate-400 opacity-60';
+        }
+      });
+
+      const fb = document.getElementById('listen-feedback');
+      fb.classList.remove('hidden');
+      fb.className = ok
+        ? 'rounded-xl p-4 text-sm bg-teal-50 border border-teal-200 text-teal-900 animate-fade-in'
+        : 'rounded-xl p-4 text-sm bg-rose-50 border border-rose-200 text-rose-900 animate-fade-in';
+      fb.innerHTML = `
+        <div class="flex items-center justify-between gap-2">
+          <div>
+            <strong>${ok ? '✓ Spot on!' : `✕ The word was "${correctWord}".`}</strong>
+            <div class="text-xs mt-1 opacity-90">Sound contrast: ${pair.contrast}</div>
+          </div>
+          <button onclick="speakPair('${pair.a}', '${pair.b}')" class="shrink-0 px-3 py-1.5 rounded-lg bg-white border border-stone-200 text-xs font-bold text-slate-700 hover:bg-stone-50">
+            ▶ Compare Both
+          </button>
+        </div>
+      `;
+
+      document.getElementById('listen-next-btn').classList.remove('hidden');
+    }
+
+    function nextListeningPair() {
+      listenState.index++;
+      listenState.answered = false;
+      if (listenState.index < LISTENING_PAIRS.length) {
+        pickListeningTarget();
+      }
+      renderListeningLab();
+    }
+
+    /* =========================================================================
+       9. INITIALIZATION ON LOAD
+       ========================================================================= */
+    window.addEventListener('DOMContentLoaded', () => {
+      // Section 1
+      selectOrgan('lips');
+      renderSpellingAccordion();
+
+      // Section 2
+      renderCategoryFilters();
+      renderSoundGrid();
+
+      // Section 3
+      renderMCQ();
+      initMatchingRound(0);
+      initVoicingGame();
+      initSilentRound(0);
+      initListeningLab();
+
+      updateProgressUI();
+    });
+  </script>
+</body>
+</html>
